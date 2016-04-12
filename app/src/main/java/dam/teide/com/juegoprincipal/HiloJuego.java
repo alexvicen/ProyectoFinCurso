@@ -8,9 +8,6 @@ import android.widget.Toast;
 
 import java.util.Random;
 
-/**
- * Created by ACER Aspire on 12/03/2016.
- */
 public class HiloJuego extends AsyncTask<Void,Void,Void>{
     private MainActivity activity;
     private int puntos;
@@ -28,7 +25,6 @@ public class HiloJuego extends AsyncTask<Void,Void,Void>{
     @Override
     protected Void doInBackground(Void... params) {
         while (activity.getPuntos()>0){
-            publishProgress();
         }
         return null;
     }
@@ -48,6 +44,7 @@ public class HiloJuego extends AsyncTask<Void,Void,Void>{
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         Intent i = new Intent(activity,Index.class);
+        i.putExtra("madera",activity.getPunMor());
         activity.startActivity(i);
     }
 
