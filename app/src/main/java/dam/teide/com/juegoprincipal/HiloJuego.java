@@ -25,6 +25,7 @@ public class HiloJuego extends AsyncTask<Void,Void,Void>{
     @Override
     protected Void doInBackground(Void... params) {
         while (activity.getPuntos()>0){
+
         }
         return null;
     }
@@ -32,7 +33,6 @@ public class HiloJuego extends AsyncTask<Void,Void,Void>{
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        Toast.makeText(activity, "Juego Empezado", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -56,8 +56,11 @@ public class HiloJuego extends AsyncTask<Void,Void,Void>{
                     contadorHoriz++;
                     if (contadorHoriz == 2) {
                         contadorHoriz = 0;
-                        sumarPuntos(arraynum[i][j]);
+                        if (activity.isPlay()){
+                            sumarPuntos(arraynum[i][j]);
+                        }
                         activity.cambiarPosicion(arrayimg[i][j - 1],arrayimg[r.nextInt(arraynum.length)][r.nextInt(arraynum.length)]);
+                        activity.cambiarPosicion(arrayimg[i][j],arrayimg[r.nextInt(arraynum.length)][r.nextInt(arraynum.length)]);
                         activity.cambiarPosicion(arrayimg[i][j], arrayimg[r.nextInt(arraynum.length)][r.nextInt(arraynum.length)]);
                         j=1;
                     }
@@ -75,8 +78,11 @@ public class HiloJuego extends AsyncTask<Void,Void,Void>{
                     contadorVertical++;
                     if (contadorVertical == 2) {
                         contadorVertical = 0;
-                        sumarPuntos(arraynum[j][i]);
+                        if (activity.isPlay()){
+                            sumarPuntos(arraynum[i][j]);
+                        }
                         activity.cambiarPosicion(arrayimg[j - 1][i],arrayimg[r.nextInt(arraynum.length)][r.nextInt(arraynum.length)]);
+                        activity.cambiarPosicion(arrayimg[j][i],arrayimg[r.nextInt(arraynum.length)][r.nextInt(arraynum.length)]);
                         activity.cambiarPosicion(arrayimg[j][i], arrayimg[r.nextInt(arraynum.length)][r.nextInt(arraynum.length)]);
                         j=1;
                     }

@@ -237,17 +237,17 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
     }
 
     public void bajarVida(Esqueleto esqueleto){
-        int daño =personaje.getVida()-(esqueleto.getAtaque()-(personaje.getDefensa()));
+        int daño = (esqueleto.getAtaque()-(personaje.getDefensa()));
         if (daño<0){
             daño=0;
         }
-        personaje.setVida(daño);
+        personaje.setVida(personaje.getVida()- daño);
         if (personaje.getVida()<1){
             personaje.setVida(1);
         }
         pbVida.setProgress(personaje.getVida());
         txtVida.setText(personaje.getVida() + "");
-        if (personaje.getVida()<=5){
+        if (personaje.getVida()<=1){
             encendido=false;
         }
         if ((esqueleto1.getVida()<1)&&(esqueleto2.getVida()<1)&&(esqueleto3.getVida()<1)){
@@ -255,11 +255,11 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
         }
     }
     public void bajarVidaCritico(Esqueleto esqueleto){
-        int daño = personaje.getVida() - (esqueleto.getAtaque()+esqueleto.getCritico()-(personaje.getDefensa()));
+        int daño = (esqueleto.getAtaque()+esqueleto.getCritico()-(personaje.getDefensa()));
         if (daño<0){
             daño=0;
         }
-        personaje.setVida(daño);
+        personaje.setVida(personaje.getVida()-daño);
         if (personaje.getVida()<1){
             personaje.setVida(1);
         }
@@ -274,38 +274,41 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
     }
     public void bajarVidaEnemigo(Esqueleto esqueleto){
         if (esqueleto==esqueleto1){
-            int daño = esqueleto1.getVida() - (personaje.getAtaque() - (esqueleto1.getDefensa()));
+            int daño = (personaje.getAtaque() - (esqueleto1.getDefensa()));
             if (daño<0){
                 daño=0;
             }
-            esqueleto1.setVida(daño);
-            pb1.setProgress(esqueleto.getVida());
-            txt1.setText(esqueleto.getVida()+"");
+            esqueleto1.setVida(esqueleto1.getVida()-daño);
             if (esqueleto1.getVida()<=0){
+                esqueleto1.setVida(0);
                 enem1=true;
             }
+            pb1.setProgress(esqueleto1.getVida());
+            txt1.setText(esqueleto1.getVida()+"");
         }else if (esqueleto==esqueleto2){
-            int daño=esqueleto2.getVida() - (personaje.getAtaque()-(esqueleto2.getDefensa()));
+            int daño= (personaje.getAtaque()-(esqueleto2.getDefensa()));
             if (daño<0){
                 daño=0;
             }
-            esqueleto2.setVida(daño);
-            pb2.setProgress(esqueleto.getVida());
-            txt2.setText(esqueleto.getVida()+"");
+            esqueleto2.setVida(esqueleto2.getVida() - daño);
             if (esqueleto2.getVida()<=0){
+                esqueleto2.setVida(0);
                 enem2=true;
             }
+            pb2.setProgress(esqueleto2.getVida());
+            txt2.setText(esqueleto2.getVida()+"");
         }else if (esqueleto==esqueleto3){
-            int daño = esqueleto3.getVida() - (personaje.getAtaque()-(esqueleto3.getDefensa()));
+            int daño =  (personaje.getAtaque()-(esqueleto3.getDefensa()));
             if (daño<0){
                 daño=0;
             }
-            esqueleto3.setVida(daño);
-            pb3.setProgress(esqueleto.getVida());
-            txt3.setText(esqueleto.getVida()+"");
+            esqueleto3.setVida(esqueleto3.getVida() - daño);
             if (esqueleto3.getVida()<=0){
+                esqueleto3.setVida(0);
                 enem3=true;
             }
+            pb3.setProgress(esqueleto3.getVida());
+            txt3.setText(esqueleto3.getVida()+"");
         }
         if ((esqueleto1.getVida()<1)&&(esqueleto2.getVida()<1)&&(esqueleto3.getVida()<1)){
             encendido=false;
@@ -314,38 +317,44 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
     }
     public void bajarVidaEnemigoCritico(Esqueleto esqueleto){
         if (esqueleto==esqueleto1){
-            int daño = esqueleto1.getVida() - (personaje.getAtaque()+personaje.getCritico()-esqueleto1.getDefensa());
+            int daño =  (personaje.getAtaque()+personaje.getCritico()-esqueleto1.getDefensa());
             if (daño<0){
                 daño=0;
             }
-            esqueleto1.setVida(daño);
-            pb1.setProgress(esqueleto.getVida());
-            txt1.setText(esqueleto.getVida()+"");
+            esqueleto1.setVida(esqueleto1.getVida() - daño);
+
             if (esqueleto1.getVida()<=0){
+                esqueleto1.setVida(0);
                 enem1=true;
             }
+            pb1.setProgress(esqueleto.getVida());
+            txt1.setText(esqueleto.getVida()+"");
         }else if (esqueleto==esqueleto2){
-            int daño = esqueleto2.getVida() - (personaje.getAtaque()+personaje.getCritico()-esqueleto2.getDefensa());
+            int daño =  (personaje.getAtaque()+personaje.getCritico()-esqueleto2.getDefensa());
             if (daño<0){
                 daño=0;
             }
-            esqueleto2.setVida(daño);
-            pb2.setProgress(esqueleto.getVida());
-            txt2.setText(esqueleto.getVida()+"");
+            esqueleto2.setVida(esqueleto2.getVida() - daño);
+
             if (esqueleto2.getVida()<=0){
+                esqueleto2.setVida(0);
                 enem2=true;
             }
+            pb2.setProgress(esqueleto.getVida());
+            txt2.setText(esqueleto.getVida()+"");
         }else if (esqueleto==esqueleto3){
-            int daño = esqueleto3.getVida() - (personaje.getAtaque()+personaje.getCritico()-esqueleto3.getDefensa());
+            int daño =  (personaje.getAtaque()+personaje.getCritico()-esqueleto3.getDefensa());
             if (daño<0){
                 daño=0;
             }
-            esqueleto3.setVida(daño);
-            pb3.setProgress(esqueleto.getVida());
-            txt3.setText(esqueleto.getVida()+"");
+            esqueleto3.setVida(esqueleto3.getVida() -daño);
+
             if (esqueleto3.getVida()<=0){
+                esqueleto3.setVida(0);
                 enem3=true;
             }
+            pb3.setProgress(esqueleto.getVida());
+            txt3.setText(esqueleto.getVida()+"");
         }
         if (esqueleto1.getVida()<1&&esqueleto2.getVida()<1&&esqueleto3.getVida()<1){
             encendido=false;
