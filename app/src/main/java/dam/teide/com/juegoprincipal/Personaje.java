@@ -58,22 +58,22 @@ public class Personaje {
     }
     private int Ataque(int nivel, int arco,int flecha){
         int resulata;
-        resulata = (nivel*2)+(arco*2)+(flecha);
+        resulata = (nivel*3)+(arco*2)+(flecha);
         return resulata;
     }
     private int Defensa(int nivel,int escudo){
         int resuldef;
-        resuldef = (nivel*2)+(escudo*2);
+        resuldef = (nivel*3)+(escudo*2);
         return resuldef;
     }
     private int Velocidad(int nivel,int botas,int guantes){
         int resulvel;
-        resulvel = (nivel*2)+(botas*2)+(guantes);
+        resulvel = (nivel*3)+(botas*2)+(guantes);
         return resulvel;
     }
     private int Critico(int nivel,int arco,int guantes,int flecha){
         int resulcrit;
-        resulcrit = (nivel*2)+arco+guantes+flecha;
+        resulcrit = (nivel*3)+arco+guantes+flecha;
         return resulcrit;
     }
     public int getNivel() {

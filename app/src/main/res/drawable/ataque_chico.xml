@@ -13,4 +13,9 @@ android:oneshot="true">
 <item android:drawable="@drawable/chicoataque10" android:duration="100" />
 <item android:drawable="@drawable/chicoataque11" android:duration="100" />
 <item android:drawable="@drawable/chicoataque12" android:duration="100" />
+<item android:drawable="@drawable/chicoataque4" android:duration="100" />
+<item android:drawable="@drawable/chicoataque3" android:duration="100" />
+<item android:drawable="@drawable/chicoataque2" android:duration="100" />
+<item android:drawable="@drawable/chicoataque1" android:duration="100" />
+
 </animation-list>

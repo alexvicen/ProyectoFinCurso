@@ -16,10 +16,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView arrayimg [][] = new ImageView [arraynum.length][arraynum[1].length];
     private Random r = new Random();
     private LinearLayout panelJuego;
-    private int contador=0,puntos=10,punNar=0,punRoj=0,punVer=0,punAzu=0,punMor=0;
+    private int contador=0,puntos=20,punNar=0,punRoj=0,punVer=0,punAzu=0,punMor=0;
     private ImageView casilla1,casilla2;
     private TextView txtPuntos,txtNar,txtRoj,txtVer,txtAzu,txtMor;
-    private boolean play;
+    private boolean play=false;
     private HiloJuego hj;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +33,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txtAzu=(TextView)findViewById(R.id.txtAzu);
         txtMor=(TextView)findViewById(R.id.txtMor);
         play=true;
-        CrearArrayTableroMano();
+        CrearArrayTablero();
         CrearImagenesTablero();
         CrearTablero();
         hj = new HiloJuego(this,puntos,arraynum,arrayimg);
         hj.execute();
+        hj.comprobarHorizontal();
+        hj.comprobarVertical();
         txtPuntos.setText(puntos+"");
     }
     public void CrearArrayTableroMano(){
@@ -99,19 +101,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         contador++;
         if(contador==1){
             casilla1 = (ImageView) v;
+            activarProximos();
         }else if(contador==2){
             casilla2 = (ImageView) v;
-            cambiarPosicion(casilla1, casilla2);
-            hj.comprobarVertical();
-            hj.comprobarHorizontal();
-            hj.comprobarVertical();
-            hj.comprobarHorizontal();
-            hj.comprobarVertical();
-            hj.comprobarHorizontal();
-            hj.comprobarVertical();
-            hj.comprobarHorizontal();
-            contador=0;
-            movimientos();
+            if (casilla1 == casilla2){
+                contador = 0;
+                activarTodos();
+            }else {
+                cambiarPosicion(casilla1, casilla2);
+                hj.comprobarVertical();
+                hj.comprobarHorizontal();
+                contador = 0;
+                movimientos();
+                activarTodos();
+            }
         }
     }
     public void cambiarPosicion(ImageView imageView1, ImageView imageView2){
@@ -128,6 +131,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         panelJuego.removeAllViews();
         CrearImagenesTablero();
         CrearTablero();
+    }
+
+    public void activarProximos(){
+        String tag1 = casilla1.getTag().toString();
+        int i1 = Integer.parseInt(tag1.substring(0,1));
+        int j1 = Integer.parseInt(tag1.substring(1));
+        for (int i = 0;i<arrayimg.length;i++){
+            for (int j = 0;j<arrayimg[i].length;j++){
+                if (i1==i-1&&j1==j-1||i1==i&&j1==j-1||i1==i+1&&j1==j-1||i1==i+1&&j1==j||i1==i+1&&j1==j+1||i1==i&&j1==j+1||i1==i-1&&j1==j+1||i1==i-1&&j1==j||i1==i&&j1==j){
+
+                }else {
+                    arrayimg[i][j].setClickable(false);
+                    arrayimg[i][j].setAlpha(0.5f);
+                }
+            }
+        }
+    }
+    public void activarTodos(){
+        for (int i = 0;i<arrayimg.length;i++){
+            for (int j = 0;j<arrayimg[i].length;j++){
+                arrayimg[i][j].setClickable(true);
+                arrayimg[i][j].setAlpha(1f);
+            }
+        }
     }
 
     public int getPuntos() {
@@ -184,5 +211,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (puntos==0){
             panelJuego.setVisibility(View.INVISIBLE);
         }
+    }
+    public boolean isPlay() {
+        return play;
     }
 }

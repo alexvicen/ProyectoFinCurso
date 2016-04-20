@@ -11,4 +11,8 @@ android:oneshot="true">
 <item android:drawable="@drawable/esqueletoataque8" android:duration="100" />
 <item android:drawable="@drawable/esqueletoataque9" android:duration="100" />
 <item android:drawable="@drawable/esqueletoataque10" android:duration="100" />
+<item android:drawable="@drawable/esqueletoataque4" android:duration="100" />
+<item android:drawable="@drawable/esqueletoataque3" android:duration="100" />
+<item android:drawable="@drawable/esqueletoataque2" android:duration="100" />
+<item android:drawable="@drawable/esqueletoataque1" android:duration="100" />
 </animation-list>
