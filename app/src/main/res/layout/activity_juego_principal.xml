@@ -14,8 +14,7 @@
         android:layout_marginTop="10dp"
         android:id="@+id/linearLayout"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/layaut_movimientos">
+        android:layout_marginRight="5dp">
 
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
