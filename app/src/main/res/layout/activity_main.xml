@@ -24,14 +24,16 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Movimientos: "
-            android:id="@+id/textView" />
+            android:id="@+id/textView"
+            android:typeface="serif" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="10"
-            android:id="@+id/txtPuntos" />
+            android:id="@+id/txtPuntos"
+            android:typeface="serif" />
 
     </LinearLayout>
 
@@ -54,7 +56,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="0"
-            android:id="@+id/txtNar" />
+            android:id="@+id/txtNar"
+            android:typeface="serif" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -68,7 +71,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="0"
-            android:id="@+id/txtRoj" />
+            android:id="@+id/txtRoj"
+            android:typeface="serif" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -82,7 +86,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="0"
-            android:id="@+id/txtVer" />
+            android:id="@+id/txtVer"
+            android:typeface="serif" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -96,7 +101,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="0"
-            android:id="@+id/txtAzu" />
+            android:id="@+id/txtAzu"
+            android:typeface="serif" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -110,7 +116,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="0"
-            android:id="@+id/txtMor" />
+            android:id="@+id/txtMor"
+            android:typeface="serif" />
     </LinearLayout>
 
     <LinearLayout

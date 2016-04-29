@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">JuegoPrincipal</string>
+    <string name="introduce_datos">INTRODUCE TUS DATOS</string>
+    <string name="login">LOGIN</string>
+    <string name="contraseña">CONTRASEÑA</string>
+    <string name="olvidado_contraseña">¿HAS OLVIDADO TU CONTRASEÑA?</string>
+    <string name="entrar">ENTRAR</string>
+    <string name="registrarse">¡REGISTRATE AHORA!</string>
 </resources>

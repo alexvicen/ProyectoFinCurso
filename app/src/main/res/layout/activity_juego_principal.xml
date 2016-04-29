@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".JuegoPrincipal">
+    tools:context=".JuegoPrincipal"
+    android:background="#c69c38">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -30,7 +31,8 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="0"
             android:id="@+id/txtvida"
-            android:layout_marginRight="100dp" />
+            android:layout_marginRight="100dp"
+            android:typeface="serif" />
 
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -48,7 +50,8 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="100"
             android:id="@+id/txt1"
-            android:layout_marginRight="50dp" />
+            android:layout_marginRight="50dp"
+            android:typeface="serif" />
 
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -66,7 +69,8 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="100"
             android:id="@+id/txt2"
-            android:layout_marginRight="50dp" />
+            android:layout_marginRight="50dp"
+            android:typeface="serif" />
 
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -83,7 +87,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="100"
-            android:id="@+id/txt3" />
+            android:id="@+id/txt3"
+            android:typeface="serif" />
     </LinearLayout>
 
     <RelativeLayout
@@ -99,7 +104,9 @@
             android:text="Jugar"
             android:id="@+id/btn"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:typeface="serif"
+            android:background="@drawable/boton" />
 
         <Button
             android:layout_width="wrap_content"
@@ -110,7 +117,9 @@
             android:layout_alignTop="@+id/btnEspecial"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginRight="5dp" />
+            android:layout_marginRight="5dp"
+            android:typeface="serif"
+            android:background="@drawable/boton" />
 
         <Button
             android:layout_width="wrap_content"
@@ -121,7 +130,9 @@
             android:layout_toRightOf="@+id/btnSimple"
             android:layout_toEndOf="@+id/btnSimple"
             android:alpha="0.5"
-            android:layout_marginLeft="5dp" />
+            android:layout_marginLeft="5dp"
+            android:typeface="serif"
+            android:background="@drawable/boton" />
     </RelativeLayout>
 
 </RelativeLayout>
