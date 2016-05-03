@@ -1,8 +1,10 @@
-package dam.teide.com.juegoprincipal;
+package dam.teide.com.juegoprincipal.hilos;
 
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ImageView;
+
+import dam.teide.com.juegoprincipal.nucleo.JuegoPrincipal;
 
 public class HiloMoverEntrada extends AsyncTask<Void,Void,Void>{
     private JuegoPrincipal activity;

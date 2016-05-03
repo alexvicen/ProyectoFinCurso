@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Index"
+    tools:context=".nucleo.Index"
     android:background="#c69c38">
 
     <Button
@@ -35,4 +35,14 @@
         android:layout_marginEnd="36dp"
         android:typeface="serif"
         android:background="@drawable/boton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Herreria"
+        android:id="@+id/btnHerreria"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/boton"
+        android:typeface="serif" />
 </RelativeLayout>

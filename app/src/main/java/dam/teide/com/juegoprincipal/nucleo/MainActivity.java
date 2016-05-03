@@ -1,4 +1,4 @@
-package dam.teide.com.juegoprincipal;
+package dam.teide.com.juegoprincipal.nucleo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,9 +6,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Random;
+
+import dam.teide.com.juegoprincipal.R;
+import dam.teide.com.juegoprincipal.hilos.HiloJuego;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.candy);
         panelJuego = (LinearLayout)findViewById(R.id.panelJuego);
         txtPuntos = (TextView)findViewById(R.id.txtPuntos);
         txtNar=(TextView)findViewById(R.id.txtNar);

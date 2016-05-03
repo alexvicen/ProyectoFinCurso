@@ -9,18 +9,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".JuegoPrincipal"
+            android:name=".nucleo.JuegoPrincipal"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar.FullScreen"></activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".nucleo.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.FullScreen"></activity>
-        <activity android:name=".Index"
+        <activity android:name=".nucleo.Index"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.FullScreen">
         </activity>
-        <activity android:name=".Login"
+        <activity android:name=".nucleo.Login"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.FullScreen">
             <intent-filter>

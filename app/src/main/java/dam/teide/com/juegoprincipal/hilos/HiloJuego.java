@@ -1,12 +1,13 @@
-package dam.teide.com.juegoprincipal;
+package dam.teide.com.juegoprincipal.hilos;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Random;
+
+import dam.teide.com.juegoprincipal.nucleo.Index;
+import dam.teide.com.juegoprincipal.nucleo.MainActivity;
 
 public class HiloJuego extends AsyncTask<Void,Void,Void>{
     private MainActivity activity;

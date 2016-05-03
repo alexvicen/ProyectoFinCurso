@@ -1,4 +1,4 @@
-package dam.teide.com.juegoprincipal;
+package dam.teide.com.juegoprincipal.entidades;
 
 public class Esqueleto {
     private int vida;

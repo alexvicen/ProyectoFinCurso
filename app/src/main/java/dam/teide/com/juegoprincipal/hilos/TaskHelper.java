@@ -1,4 +1,4 @@
-package dam.teide.com.juegoprincipal;
+package dam.teide.com.juegoprincipal.hilos;
 
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;

@@ -1,16 +1,20 @@
-package dam.teide.com.juegoprincipal;
+package dam.teide.com.juegoprincipal.hilos;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.Random;
+
+import dam.teide.com.juegoprincipal.nucleo.JuegoPrincipal;
+import dam.teide.com.juegoprincipal.R;
 
 public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
     private JuegoPrincipal activity;
     private ImageView iv1,iv2,iv3,ivPer;
-    private float metaX1,metaX3,x,x1,x2,x3,y,y1,y3,aumX1,aumX3;
+    private float metaX1,metaX3,x,x1,x2,x3,y,y1,y3,aumX1,aumX3,vel;
     private ImageView flechaPer1;
     private ImageView flechaPer2;
     private ImageView flechaPer3;
@@ -111,7 +115,7 @@ public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
                     flechaPer3.setVisibility(View.INVISIBLE);
                 }
 
-
+                vel=activity.getPersonaje().getVelocidad()/2;
                 x=ivPer.getX();
                 y=ivPer.getY();
                 x1=x;
@@ -119,12 +123,13 @@ public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
                 x3=x;
                 y1=y;
                 y3=y;
+
                 metaX1=iv1.getX();
                 aumX1=metaX1/ivPer.getX();
 
                 metaX3=iv3.getX();
                 aumX3=metaX3/ivPer.getX();
-
+                Toast.makeText(activity, vel+" / ", Toast.LENGTH_SHORT).show();
                 movimientoPer = R.drawable.ataque_chico;
                 ivPer.setBackgroundResource(0);
                 ivPer.setBackgroundResource(movimientoPer);
@@ -136,8 +141,8 @@ public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
                 if (activity.getEsqueleto1().getVida()>0){
                     if (flechaPer1.getX()<iv1.getX()){
                         flechaPer1.setVisibility(View.VISIBLE);
-                        x1+=aumX1;
-                        y1+=1;
+                        x1=(aumX1+x1);
+                        y1=(1+y1);
                         flechaPer1.setX(x1);
                         flechaPer1.setY(y1);
                     }else{

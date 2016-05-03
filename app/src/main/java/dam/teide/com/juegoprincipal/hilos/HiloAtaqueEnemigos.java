@@ -1,4 +1,4 @@
-package dam.teide.com.juegoprincipal;
+package dam.teide.com.juegoprincipal.hilos;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.ImageView;
 
 import java.util.Random;
+
+import dam.teide.com.juegoprincipal.nucleo.Index;
+import dam.teide.com.juegoprincipal.nucleo.JuegoPrincipal;
+import dam.teide.com.juegoprincipal.R;
 
 public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
 

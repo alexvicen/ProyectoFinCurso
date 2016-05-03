@@ -1,4 +1,4 @@
-package dam.teide.com.juegoprincipal;
+package dam.teide.com.juegoprincipal.nucleo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.graphics.drawable.AnimationDrawable;
@@ -9,6 +9,14 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import dam.teide.com.juegoprincipal.R;
+import dam.teide.com.juegoprincipal.entidades.Esqueleto;
+import dam.teide.com.juegoprincipal.entidades.Personaje;
+import dam.teide.com.juegoprincipal.hilos.HiloAtaqueEnemigos;
+import dam.teide.com.juegoprincipal.hilos.HiloAtaquePersonaje;
+import dam.teide.com.juegoprincipal.hilos.HiloMoverEntrada;
+import dam.teide.com.juegoprincipal.hilos.TaskHelper;
 
 public class JuegoPrincipal extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,7 +43,7 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_juego_principal);
+        setContentView(R.layout.juego_principal);
         rl = (RelativeLayout) findViewById(R.id.rl);
         txtVida = (TextView)findViewById(R.id.txtvida);
         txt1 = (TextView) findViewById(R.id.txt1);
