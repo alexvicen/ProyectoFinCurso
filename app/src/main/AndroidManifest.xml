@@ -11,16 +11,17 @@
         <activity
             android:name=".nucleo.JuegoPrincipal"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar.FullScreen"></activity>
+            android:theme="@style/AppTheme.NoActionBar.FullScreen" />
         <activity
             android:name=".nucleo.MainActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.FullScreen" />
+        <activity
+            android:name=".nucleo.Index"
+            android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar.FullScreen"></activity>
-        <activity android:name=".nucleo.Index"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar.FullScreen">
-        </activity>
-        <activity android:name=".nucleo.Login"
+        <activity
+            android:name=".nucleo.Login"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.FullScreen">
             <intent-filter>
@@ -29,6 +30,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".nucleo.Herreria"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar.FullScreen"></activity>
     </application>
 
 </manifest>

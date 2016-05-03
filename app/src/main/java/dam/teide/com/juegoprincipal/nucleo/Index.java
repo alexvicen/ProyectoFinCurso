@@ -36,7 +36,8 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
                 startActivity(i);
                 break;
             case R.id.btnHerreria:
-
+                i = new Intent(this,Herreria.class);
+                startActivity(i);
                 break;
         }
     }

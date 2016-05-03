@@ -1,5 +1,9 @@
 package dam.teide.com.juegoprincipal.entidades;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
+@DatabaseTable(tableName = "mos_Personaje")
 public class Personaje {
 
     private int vida;
@@ -7,13 +11,34 @@ public class Personaje {
     private int defensa;
     private int velocidad;
     private int critico;
+
+    public static final String ID_PERSONAJE = "_id_personaje";
+    public static final String NIVEL = "nivel";
+    public static final String NIVEL_CASCO = "nivCasco";
+    public static final String NIVEL_ARCO = "nivArco";
+    public static final String NIVEL_ESCUDO = "nivEscudo";
+    public static final String NIVEL_GUANTES = "nivGuantes";
+    public static final String NIVEL_BOTAS = "nivBotas";
+    public static final String NIVEL_FLECHA = "nivFlecha";
+
+    @DatabaseField(id = true, columnName = ID_PERSONAJE)
+    private String id_personaje;
+    @DatabaseField(columnName = NIVEL)
     private int nivel;
+    @DatabaseField(columnName = NIVEL_CASCO)
     private int nivCasco;
+    @DatabaseField(columnName = NIVEL_ARCO)
     private int nivArco;
+    @DatabaseField(columnName = NIVEL_ESCUDO)
     private int nivEscudo;
+    @DatabaseField(columnName = NIVEL_GUANTES)
     private int nivGuantes;
+    @DatabaseField(columnName = NIVEL_BOTAS)
     private int nivBotas;
+    @DatabaseField(columnName = NIVEL_FLECHA)
     private int nivFlecha;
+
+
 
     public Personaje(int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha) {
         this.nivel = nivel;
