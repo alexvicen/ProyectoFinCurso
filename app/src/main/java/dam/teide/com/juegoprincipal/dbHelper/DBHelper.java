@@ -64,7 +64,7 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
 		BBDDConstantes.cerrarDao();
 	}
 
-	public Dao<Personaje, Integer> getPersonajeDAO() throws SQLException {
+	public Dao<Personaje, Integer> getPersonajeDao() throws SQLException {
 		if (BBDDConstantes.personajeDao == null) {
 			BBDDConstantes.personajeDao = getDao(Personaje.class);
 		}

@@ -3,7 +3,7 @@ package dam.teide.com.juegoprincipal.entidades;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName = "mos_Personaje")
+@DatabaseTable(tableName = "mos_personaje")
 public class Personaje {
 
     private int vida;
@@ -22,8 +22,8 @@ public class Personaje {
     public static final String NIVEL_BOTAS = "nivBotas";
     public static final String NIVEL_FLECHA = "nivFlecha";
 
-    @DatabaseField(id = true, columnName = ID_PERSONAJE)
-    private String id_personaje;
+    @DatabaseField(generatedId = true, columnName = ID_PERSONAJE)
+    private int id_personaje;
     @DatabaseField(columnName = NOMBRE_PERSONAJE)
     private String nombre_personaje;
     @DatabaseField(columnName = NIVEL)
@@ -113,10 +113,10 @@ public class Personaje {
     public void setNombre_personaje(String nombre_personaje) {
         this.nombre_personaje = nombre_personaje;
     }
-    public String getId_personaje() {
+    public int getId_personaje() {
         return id_personaje;
     }
-    public void setId_personaje(String id_personaje) {
+    public void setId_personaje(int id_personaje) {
         this.id_personaje = id_personaje;
     }
     public int getNivel() {

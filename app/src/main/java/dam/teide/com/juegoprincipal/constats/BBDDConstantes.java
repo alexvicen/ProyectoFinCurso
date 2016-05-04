@@ -11,7 +11,7 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
 public class BBDDConstantes {
-    public static final String DATABASE_NAME = "";
+    public static final String DATABASE_NAME = "proyectoFinCurso";
     public static final int DATABASE_VERSION = 2015092301;
     public static Dao<Personaje,Integer> personajeDao;
 
@@ -25,8 +25,6 @@ public class BBDDConstantes {
 
     public static void borrarTablas(ConnectionSource connectionSource) throws SQLException {
         TableUtils.dropTable(connectionSource, Personaje.class, true);
-
-
     }
 
     public static void borrarDatosTablas(Context context) throws SQLException {

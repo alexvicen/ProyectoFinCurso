@@ -86,7 +86,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         int nivel_guantes = jsonArray.getJSONObject(0).getInt("nivGuantes");
         int nivel_botas = jsonArray.getJSONObject(0).getInt("nivBotas");
         int nivel_flecha = jsonArray.getJSONObject(0).getInt("nivFlecha");
-        if(PersonajeDao.newPersonaje(this)){
+        if(PersonajeDao.newPersonaje(this,nombre, nivel, nivel_casco,  nivel_arco, nivel_escudo, nivel_guantes, nivel_botas, nivel_flecha)){
             Intent i = new Intent(this,Index.class);
             startActivity(i);
             finish();

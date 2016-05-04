@@ -15,7 +15,7 @@ public class PersonajeDao extends DBHelperMOS{
 
     static Dao<Personaje, Integer> dao;
     public static void cargarDao(Context context) throws SQLException {
-        dao = getHelper(context).getPersonajeDAO();
+        dao = getHelper(context).getPersonajeDao();
     }
     //FUNCIONES DE CREACION
     public static boolean newPersonaje(Context context,String nombre_personaje,int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha){
