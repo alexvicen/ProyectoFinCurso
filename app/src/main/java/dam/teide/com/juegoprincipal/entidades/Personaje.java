@@ -13,6 +13,7 @@ public class Personaje {
     private int critico;
 
     public static final String ID_PERSONAJE = "_id_personaje";
+    public static final String NOMBRE_PERSONAJE = "nombre_personaje";
     public static final String NIVEL = "nivel";
     public static final String NIVEL_CASCO = "nivCasco";
     public static final String NIVEL_ARCO = "nivArco";
@@ -23,6 +24,8 @@ public class Personaje {
 
     @DatabaseField(id = true, columnName = ID_PERSONAJE)
     private String id_personaje;
+    @DatabaseField(columnName = NOMBRE_PERSONAJE)
+    private String nombre_personaje;
     @DatabaseField(columnName = NIVEL)
     private int nivel;
     @DatabaseField(columnName = NIVEL_CASCO)
@@ -40,7 +43,8 @@ public class Personaje {
 
 
 
-    public Personaje(int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha) {
+    public Personaje(String nombre_personaje,int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha) {
+        this.nombre_personaje=nombre_personaje;
         this.nivel = nivel;
         this.nivCasco = nivCasco;
         this.nivArco = nivArco;
@@ -48,7 +52,6 @@ public class Personaje {
         this.nivGuantes = nivGuantes;
         this.nivBotas = nivBotas;
         this.nivFlecha = nivFlecha;
-
         this.vida = Vida(nivel,nivCasco);
         this.ataque = Ataque(nivel,nivArco,nivFlecha);
         this.defensa = Defensa(nivel,nivEscudo);
@@ -100,6 +103,19 @@ public class Personaje {
         int resulcrit;
         resulcrit = (nivel*3)+arco+guantes+flecha;
         return resulcrit;
+    }
+
+    public String getNombre_personaje() {
+        return nombre_personaje;
+    }
+    public void setNombre_personaje(String nombre_personaje) {
+        this.nombre_personaje = nombre_personaje;
+    }
+    public String getId_personaje() {
+        return id_personaje;
+    }
+    public void setId_personaje(String id_personaje) {
+        this.id_personaje = id_personaje;
     }
     public int getNivel() {
         return nivel;

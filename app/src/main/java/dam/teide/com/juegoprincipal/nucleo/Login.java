@@ -6,15 +6,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.sql.SQLException;
 
 import dam.teide.com.juegoprincipal.R;
+import dam.teide.com.juegoprincipal.dao.PersonajeDao;
+import dam.teide.com.juegoprincipal.hilos.HiloConexion;
 import dam.teide.com.juegoprincipal.nucleo.Index;
 
 public class Login extends AppCompatActivity implements View.OnClickListener{
 
     private Button btnEntrar;
     private TextView tvContOlvi,tvRegistro;
+    private EditText etLogin,etPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +33,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         btnEntrar = (Button)findViewById(R.id.btnEntrar);
         tvContOlvi = (TextView)findViewById(R.id.tvContOlvi);
         tvRegistro = (TextView)findViewById(R.id.tvRegistro);
+        etLogin = (EditText)findViewById(R.id.etLogin);
+        etPass = (EditText)findViewById(R.id.etPass);
         btnEntrar.setOnClickListener(this);
         tvContOlvi.setOnClickListener(this);
         tvRegistro.setOnClickListener(this);
@@ -32,9 +44,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnEntrar:
-                Intent i = new Intent(this,Index.class);
-                startActivity(i);
-                finish();
+                new HiloConexion(this,"login",etLogin.getText().toString().trim(),etPass.getText().toString().trim()).execute();
                 break;
             case R.id.tvContOlvi:
                 try {
@@ -60,5 +70,30 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         Intent intent = null;
         intent = new Intent(intent.ACTION_VIEW, Uri.parse(link));
         startActivity(intent);
+    }
+    public void errorDatos(){
+
+    }
+    public void recogerJsonPersonaje(String Json) throws JSONException, SQLException {
+        Toast.makeText(Login.this, Json, Toast.LENGTH_SHORT).show();
+        JSONObject jsonObject = new JSONObject(Json);
+        jsonObject = jsonObject.getJSONObject("0");
+
+        String nombre = jsonObject.getString("nombre_personaje");
+        int nivel = jsonObject.getInt("nivel");
+        int nivel_casco = jsonObject.getInt("nivCasco");
+        int nivel_arco = jsonObject.getInt("nivArco");
+        int nivel_escudo = jsonObject.getInt("nivEscudo");
+        int nivel_guantes = jsonObject.getInt("nivGuantes");
+        int nivel_botas = jsonObject.getInt("nivBotas");
+        int nivel_flecha = jsonObject.getInt("nivFlecha");
+        //Toast.makeText(this,nombre,Toast.LENGTH_SHORT).show();
+        if(PersonajeDao.newPersonaje(this)){
+            Intent i = new Intent(this,Index.class);
+            startActivity(i);
+            finish();
+        }else{
+            Toast.makeText(this,"Login fallido",Toast.LENGTH_SHORT).show();
+        }
     }
 }

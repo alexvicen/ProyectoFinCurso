@@ -25,7 +25,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/etLogin"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:hint="@string/login"
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/etPass"
         android:hint="@string/contraseña"
         android:gravity="center"
         android:layout_marginLeft="30dp"
