@@ -18,23 +18,22 @@ public class PersonajeDao extends DBHelperMOS{
         dao = getHelper(context).getPersonajeDAO();
     }
     //FUNCIONES DE CREACION
-    public static boolean newPersonaje(Context context){
-        Personaje p = montarPersonaje();
+    public static boolean newPersonaje(Context context,String nombre_personaje,int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha){
+        Personaje p = montarPersonaje(nombre_personaje,nivel,nivCasco, nivArco, nivEscudo, nivGuantes, nivBotas, nivFlecha);
         return crearPersonaje(p,context);
     }
     public static boolean crearPersonaje(Personaje p,Context context){
         try {
             cargarDao(context);
             dao.create(p);
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
-
-        return true;
     }
-    public static Personaje montarPersonaje(){
-        Personaje p = new Personaje(1);
+    public static Personaje montarPersonaje(String nombre_personaje,int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha){
+        Personaje p = new Personaje(nombre_personaje,nivel, nivCasco, nivArco, nivEscudo, nivGuantes, nivBotas, nivFlecha);
         return p;
     }
     //FUNCIONES DE BORRADO

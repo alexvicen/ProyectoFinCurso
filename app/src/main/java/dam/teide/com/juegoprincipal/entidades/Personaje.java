@@ -41,7 +41,9 @@ public class Personaje {
     @DatabaseField(columnName = NIVEL_FLECHA)
     private int nivFlecha;
 
+    public Personaje(){
 
+    }
 
     public Personaje(String nombre_personaje,int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha) {
         this.nombre_personaje=nombre_personaje;

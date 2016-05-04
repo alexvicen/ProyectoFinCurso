@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -72,22 +73,19 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         startActivity(intent);
     }
     public void errorDatos(){
-
+        Toast.makeText(this,"Login fallido",Toast.LENGTH_SHORT).show();
     }
     public void recogerJsonPersonaje(String Json) throws JSONException, SQLException {
-        Toast.makeText(Login.this, Json, Toast.LENGTH_SHORT).show();
         JSONObject jsonObject = new JSONObject(Json);
-        jsonObject = jsonObject.getJSONObject("0");
-
-        String nombre = jsonObject.getString("nombre_personaje");
-        int nivel = jsonObject.getInt("nivel");
-        int nivel_casco = jsonObject.getInt("nivCasco");
-        int nivel_arco = jsonObject.getInt("nivArco");
-        int nivel_escudo = jsonObject.getInt("nivEscudo");
-        int nivel_guantes = jsonObject.getInt("nivGuantes");
-        int nivel_botas = jsonObject.getInt("nivBotas");
-        int nivel_flecha = jsonObject.getInt("nivFlecha");
-        //Toast.makeText(this,nombre,Toast.LENGTH_SHORT).show();
+        JSONArray jsonArray = jsonObject.getJSONArray("0");
+        String nombre = jsonArray.getJSONObject(0).getString("nombre_personaje");
+        int nivel = jsonArray.getJSONObject(0).getInt("nivel");
+        int nivel_casco = jsonArray.getJSONObject(0).getInt("nivCasco");
+        int nivel_arco = jsonArray.getJSONObject(0).getInt("nivArco");
+        int nivel_escudo = jsonArray.getJSONObject(0).getInt("nivEscudo");
+        int nivel_guantes = jsonArray.getJSONObject(0).getInt("nivGuantes");
+        int nivel_botas = jsonArray.getJSONObject(0).getInt("nivBotas");
+        int nivel_flecha = jsonArray.getJSONObject(0).getInt("nivFlecha");
         if(PersonajeDao.newPersonaje(this)){
             Intent i = new Intent(this,Index.class);
             startActivity(i);
