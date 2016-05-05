@@ -18,8 +18,8 @@ public class PersonajeDao extends DBHelperMOS{
         dao = getHelper(context).getPersonajeDao();
     }
     //FUNCIONES DE CREACION
-    public static boolean newPersonaje(Context context,String nombre_personaje,int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha){
-        Personaje p = montarPersonaje(nombre_personaje,nivel,nivCasco, nivArco, nivEscudo, nivGuantes, nivBotas, nivFlecha);
+    public static boolean newPersonaje(Context context,String nombre_personaje,int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha,int pepita,int hierro,int gema_bruto,int roca,int tronco,int lingote_oro, int lingote_hierro, int gema, int piedra, int tabla_madera){
+        Personaje p = montarPersonaje(nombre_personaje,nivel,nivCasco, nivArco, nivEscudo, nivGuantes, nivBotas, nivFlecha,pepita,hierro,gema_bruto,roca,tronco,lingote_oro,lingote_hierro,gema, piedra, tabla_madera);
         return crearPersonaje(p,context);
     }
     public static boolean crearPersonaje(Personaje p,Context context){
@@ -32,8 +32,8 @@ public class PersonajeDao extends DBHelperMOS{
             return false;
         }
     }
-    public static Personaje montarPersonaje(String nombre_personaje,int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha){
-        Personaje p = new Personaje(nombre_personaje,nivel, nivCasco, nivArco, nivEscudo, nivGuantes, nivBotas, nivFlecha);
+    public static Personaje montarPersonaje(String nombre_personaje,int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha,int pepita,int hierro,int gema_bruto,int roca,int tronco,int lingote_oro, int lingote_hierro, int gema, int piedra, int tabla_madera){
+        Personaje p = new Personaje(nombre_personaje,nivel, nivCasco, nivArco, nivEscudo, nivGuantes, nivBotas, nivFlecha,pepita,hierro,gema_bruto,roca,tronco,lingote_oro,lingote_hierro,gema,piedra,tabla_madera);
         return p;
     }
     //FUNCIONES DE BORRADO
@@ -43,13 +43,13 @@ public class PersonajeDao extends DBHelperMOS{
         deleteBuilder.delete();
     }
 
-    public static List<Personaje> buscarTodosLosUsuarios(Context context) throws SQLException {
+    public static Personaje buscarPersonaje(Context context) throws SQLException {
         cargarDao(context);
         List<Personaje> listadoPersonaje= dao.queryForAll();
         if(listadoPersonaje.isEmpty()) {
             return null;
         }else{
-            return listadoPersonaje;
+            return listadoPersonaje.get(0);
         }
     }
     //FUNCIONES ACTUALIZAR

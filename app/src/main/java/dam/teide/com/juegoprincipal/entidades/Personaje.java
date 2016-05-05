@@ -6,12 +6,6 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "mos_personaje")
 public class Personaje {
 
-    private int vida;
-    private int ataque;
-    private int defensa;
-    private int velocidad;
-    private int critico;
-
     public static final String ID_PERSONAJE = "_id_personaje";
     public static final String NOMBRE_PERSONAJE = "nombre_personaje";
     public static final String NIVEL = "nivel";
@@ -21,6 +15,21 @@ public class Personaje {
     public static final String NIVEL_GUANTES = "nivGuantes";
     public static final String NIVEL_BOTAS = "nivBotas";
     public static final String NIVEL_FLECHA = "nivFlecha";
+    public static final String VIDA = "vida";
+    public static final String ATAQUE = "ataque";
+    public static final String DEFENSA = "defensa";
+    public static final String VELOCIDAD = "velocidad";
+    public static final String CRITICO = "critico";
+    public static final String PEPITA = "pepita";
+    public static final String HIERRO = "hierro";
+    public static final String GEMA_BRUTO = "gema_bruto";
+    public static final String ROCA = "roca";
+    public static final String TRONCO = "tronco";
+    public static final String LINGOTE_ORO = "lingote_oro";
+    public static final String LINGOTE_HIERRO = "lingote_hierro";
+    public static final String GEMA = "gema";
+    public static final String PIEDRA = "piedra";
+    public static final String TABLA_MADERA = "tabla_madera";
 
     @DatabaseField(generatedId = true, columnName = ID_PERSONAJE)
     private int id_personaje;
@@ -40,12 +49,44 @@ public class Personaje {
     private int nivBotas;
     @DatabaseField(columnName = NIVEL_FLECHA)
     private int nivFlecha;
+    @DatabaseField(columnName = VIDA)
+    private int vida;
+    @DatabaseField(columnName = ATAQUE)
+    private int ataque;
+    @DatabaseField(columnName = DEFENSA)
+    private int defensa;
+    @DatabaseField(columnName = VELOCIDAD)
+    private int velocidad;
+    @DatabaseField(columnName = CRITICO)
+    private int critico;
+
+    @DatabaseField(columnName = PEPITA)
+    private int pepita;
+    @DatabaseField(columnName = HIERRO)
+    private int hierro;
+    @DatabaseField(columnName = GEMA_BRUTO)
+    private int gema_bruto;
+    @DatabaseField(columnName = ROCA)
+    private int roca;
+    @DatabaseField(columnName = TRONCO)
+    private int tronco;
+    @DatabaseField(columnName = LINGOTE_ORO)
+    private int lingote_oro;
+    @DatabaseField(columnName = LINGOTE_HIERRO)
+    private int lingote_hierro;
+    @DatabaseField(columnName = GEMA)
+    private int gema;
+    @DatabaseField(columnName = PIEDRA)
+    private int piedra;
+    @DatabaseField(columnName = TABLA_MADERA)
+    private int tabla_madera;
 
     public Personaje(){
 
     }
 
-    public Personaje(String nombre_personaje,int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha) {
+    public Personaje(String nombre_personaje,int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha,
+                     int pepita,int hierro,int gema_bruto,int roca,int tronco,int lingote_oro, int lingote_hierro, int gema, int piedra, int tabla_madera) {
         this.nombre_personaje=nombre_personaje;
         this.nivel = nivel;
         this.nivCasco = nivCasco;
@@ -54,6 +95,16 @@ public class Personaje {
         this.nivGuantes = nivGuantes;
         this.nivBotas = nivBotas;
         this.nivFlecha = nivFlecha;
+        this.pepita=pepita;
+        this.hierro=hierro;
+        this.gema_bruto=gema_bruto;
+        this.roca=roca;
+        this.tronco=tronco;
+        this.lingote_oro=lingote_oro;
+        this.lingote_hierro=lingote_hierro;
+        this.gema=gema;
+        this.piedra=piedra;
+        this.tabla_madera=tabla_madera;
         this.vida = Vida(nivel,nivCasco);
         this.ataque = Ataque(nivel,nivArco,nivFlecha);
         this.defensa = Defensa(nivel,nivEscudo);
@@ -190,5 +241,68 @@ public class Personaje {
     }
     public void setCritico(int critico) {
         this.critico = critico;
+    }
+    public static String getIdPersonaje() {
+        return ID_PERSONAJE;
+    }
+    public int getPepita() {
+        return pepita;
+    }
+    public void setPepita(int pepita) {
+        this.pepita = pepita;
+    }
+    public int getHierro() {
+        return hierro;
+    }
+    public void setHierro(int hierro) {
+        this.hierro = hierro;
+    }
+    public int getGema_bruto() {
+        return gema_bruto;
+    }
+    public void setGema_bruto(int gema_bruto) {
+        this.gema_bruto = gema_bruto;
+    }
+    public int getRoca() {
+        return roca;
+    }
+    public void setRoca(int roca) {
+        this.roca = roca;
+    }
+    public int getTronco() {
+        return tronco;
+    }
+    public void setTronco(int tronco) {
+        this.tronco = tronco;
+    }
+    public int getLingote_oro() {
+        return lingote_oro;
+    }
+    public void setLingote_oro(int lingote_oro) {
+        this.lingote_oro = lingote_oro;
+    }
+    public int getLingote_hierro() {
+        return lingote_hierro;
+    }
+    public void setLingote_hierro(int lingote_hierro) {
+        this.lingote_hierro = lingote_hierro;
+    }
+    public int getGema() {
+        return gema;
+    }
+    public void setGema(int gema) {
+        this.gema = gema;
+    }
+    public int getPiedra() {
+        return piedra;
+    }
+    public void setPiedra(int piedra) {
+        this.piedra = piedra;
+    }
+    public int getTabla_madera() {
+        return tabla_madera;
+    }
+    public void setTabla_madera(int tabla_madera) {
+        this.tabla_madera = tabla_madera;
     }
 }

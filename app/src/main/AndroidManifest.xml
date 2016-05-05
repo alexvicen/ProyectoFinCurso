@@ -15,7 +15,7 @@
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar.FullScreen" />
         <activity
-            android:name=".nucleo.MainActivity"
+            android:name=".nucleo.TresLinea"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.FullScreen" />
         <activity

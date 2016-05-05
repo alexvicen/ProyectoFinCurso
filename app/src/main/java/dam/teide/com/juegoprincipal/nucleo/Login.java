@@ -17,7 +17,9 @@ import org.json.JSONObject;
 import java.sql.SQLException;
 
 import dam.teide.com.juegoprincipal.R;
+import dam.teide.com.juegoprincipal.constats.BBDDConstantes;
 import dam.teide.com.juegoprincipal.dao.PersonajeDao;
+import dam.teide.com.juegoprincipal.entidades.Personaje;
 import dam.teide.com.juegoprincipal.hilos.HiloConexion;
 import dam.teide.com.juegoprincipal.nucleo.Index;
 
@@ -39,6 +41,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         btnEntrar.setOnClickListener(this);
         tvContOlvi.setOnClickListener(this);
         tvRegistro.setOnClickListener(this);
+        try {
+            if (PersonajeDao.buscarPersonaje(this)!=null){
+                Intent i = new Intent(this,Index.class);
+                startActivity(i);
+                finish();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -73,7 +84,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         startActivity(intent);
     }
     public void errorDatos(){
-        Toast.makeText(this,"Login fallido",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Login fallidos",Toast.LENGTH_SHORT).show();
     }
     public void recogerJsonPersonaje(String Json) throws JSONException, SQLException {
         JSONObject jsonObject = new JSONObject(Json);
@@ -86,12 +97,25 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         int nivel_guantes = jsonArray.getJSONObject(0).getInt("nivGuantes");
         int nivel_botas = jsonArray.getJSONObject(0).getInt("nivBotas");
         int nivel_flecha = jsonArray.getJSONObject(0).getInt("nivFlecha");
-        if(PersonajeDao.newPersonaje(this,nombre, nivel, nivel_casco,  nivel_arco, nivel_escudo, nivel_guantes, nivel_botas, nivel_flecha)){
+
+        int pepita = jsonArray.getJSONObject(0).getInt("pepita");
+        int hierro = jsonArray.getJSONObject(0).getInt("hierro");
+        int gema_bruto = jsonArray.getJSONObject(0).getInt("gema_bruto");
+        int roca = jsonArray.getJSONObject(0).getInt("roca");
+        int tronco = jsonArray.getJSONObject(0).getInt("tronco");
+        int lingote_oro = jsonArray.getJSONObject(0).getInt("lingote_oro");
+        int lingote_hierro = jsonArray.getJSONObject(0).getInt("lingote_hierro");
+        int gema = jsonArray.getJSONObject(0).getInt("gema");
+        int piedra = jsonArray.getJSONObject(0).getInt("piedra");
+        int tabla_madera = jsonArray.getJSONObject(0).getInt("tabla_madera");
+
+        if(PersonajeDao.newPersonaje(this,nombre, nivel, nivel_casco,  nivel_arco, nivel_escudo, nivel_guantes, nivel_botas, nivel_flecha,
+                pepita,hierro,gema_bruto,roca,tronco,lingote_oro,lingote_hierro,gema,piedra,tabla_madera)){
             Intent i = new Intent(this,Index.class);
             startActivity(i);
             finish();
         }else{
-            Toast.makeText(this,"Login fallido",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Fallo de recogida de datos del servidor",Toast.LENGTH_SHORT).show();
         }
     }
 }

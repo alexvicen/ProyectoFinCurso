@@ -45,4 +45,15 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/boton"
         android:typeface="serif" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cerrar"
+        android:id="@+id/btnCerrarSesion"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/boton" />
 </RelativeLayout>

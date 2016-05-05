@@ -12,7 +12,7 @@ import java.util.Random;
 import dam.teide.com.juegoprincipal.R;
 import dam.teide.com.juegoprincipal.hilos.HiloJuego;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class TresLinea extends AppCompatActivity implements View.OnClickListener{
 
     private int arraynum [][] = new int [8][8];
     private ImageView arrayimg [][] = new ImageView [arraynum.length][arraynum[1].length];
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.candy);
+        setContentView(R.layout.tres_linea);
         panelJuego = (LinearLayout)findViewById(R.id.panelJuego);
         txtPuntos = (TextView)findViewById(R.id.txtPuntos);
         txtNar=(TextView)findViewById(R.id.txtNar);
@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txtVer=(TextView)findViewById(R.id.txtVer);
         txtAzu=(TextView)findViewById(R.id.txtAzu);
         txtMor=(TextView)findViewById(R.id.txtMor);
-        play=true;
         CrearArrayTablero();
         CrearImagenesTablero();
         CrearTablero();
@@ -43,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         hj.comprobarHorizontal();
         hj.comprobarVertical();
         txtPuntos.setText(puntos+"");
+        play=true;
     }
     public void CrearArrayTableroMano(){
 
@@ -68,15 +68,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             for (int j = 0;j<arraynum[i].length;j++){
                 ImageView imageView = new ImageView(this);
                 if(arraynum[i][j]==0){
-                    imageView.setImageResource(R.drawable.diamante);
+                    imageView.setImageResource(R.drawable.roca);
                 }else if(arraynum[i][j]==1){
-                    imageView.setImageResource(R.drawable.diamante1);
+                    imageView.setImageResource(R.drawable.troncos);
                 }else if(arraynum[i][j]==2){
-                    imageView.setImageResource(R.drawable.diamante2);
+                    imageView.setImageResource(R.drawable.hierro);
                 }else if(arraynum[i][j]==3){
-                    imageView.setImageResource(R.drawable.diamante3);
+                    imageView.setImageResource(R.drawable.pepita);
                 }else{
-                    imageView.setImageResource(R.drawable.diamante4);
+                    imageView.setImageResource(R.drawable.gema_bruto);
                 }
                 arrayimg[i][j]= imageView;
             }

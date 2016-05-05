@@ -33,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView6"
-                    android:src="@drawable/diamante"
+                    android:src="@drawable/roca"
                     android:layout_weight="1" />
 
                 <TextView
@@ -48,7 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView7"
-                    android:src="@drawable/diamante1"
+                    android:src="@drawable/troncos"
                     android:layout_weight="1" />
 
                 <TextView
@@ -63,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView8"
-                    android:src="@drawable/diamante2"
+                    android:src="@drawable/hierro"
                     android:layout_weight="1" />
 
                 <TextView
@@ -78,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView9"
-                    android:src="@drawable/diamante3"
+                    android:src="@drawable/pepita"
                     android:layout_weight="1" />
 
                 <TextView
@@ -93,7 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView10"
-                    android:src="@drawable/diamante4"
+                    android:src="@drawable/gema_bruto"
                     android:layout_weight="1" />
 
                 <TextView
