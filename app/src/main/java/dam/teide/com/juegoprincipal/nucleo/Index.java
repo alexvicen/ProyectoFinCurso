@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.sql.SQLException;
 import dam.teide.com.juegoprincipal.R;
 import dam.teide.com.juegoprincipal.constats.BBDDConstantes;
@@ -54,14 +57,29 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
                 finish();
                 break;
             case R.id.btnCerrarSesion:
-                try {
-                    BBDDConstantes.borrarDatosTablas(this);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                finish();
+
 
                 break;
         }
+    }
+
+    public void recogerJsonActualizarPersonaje(String Json) throws JSONException {
+        JSONObject jsonObject = new JSONObject(Json);
+        int estado = jsonObject.getInt("estado");
+        if (estado == 201) {
+            try {
+                BBDDConstantes.borrarDatosTablas(this);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            finish();
+        }else{
+            Toast.makeText(Index.this, "No se ha podido actualizar", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void errorDatos() {
+        Toast.makeText(Index.this, "Error al cerrar sesion", Toast.LENGTH_SHORT).show();
     }
 }
