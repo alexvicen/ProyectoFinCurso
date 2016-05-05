@@ -37,11 +37,6 @@
             android:name=".nucleo.Herreria"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar.FullScreen" />
-
-        <service
-            android:name=".service.SubidaDatos"
-            android:enabled="true"
-            android:exported="true"></service>
     </application>
 
 </manifest>
