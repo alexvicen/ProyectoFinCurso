@@ -89,6 +89,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     public void recogerJsonPersonaje(String Json) throws JSONException, SQLException {
         JSONObject jsonObject = new JSONObject(Json);
         JSONArray jsonArray = jsonObject.getJSONArray("0");
+        int fk_usuario = jsonArray.getJSONObject(0).getInt("fk_usuario");
         String nombre = jsonArray.getJSONObject(0).getString("nombre_personaje");
         int nivel = jsonArray.getJSONObject(0).getInt("nivel");
         int nivel_casco = jsonArray.getJSONObject(0).getInt("nivCasco");
@@ -109,7 +110,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         int piedra = jsonArray.getJSONObject(0).getInt("piedra");
         int tabla_madera = jsonArray.getJSONObject(0).getInt("tabla_madera");
 
-        if(PersonajeDao.newPersonaje(this,nombre, nivel, nivel_casco,  nivel_arco, nivel_escudo, nivel_guantes, nivel_botas, nivel_flecha,
+        if(PersonajeDao.newPersonaje(this,fk_usuario,nombre, nivel, nivel_casco,  nivel_arco, nivel_escudo, nivel_guantes, nivel_botas, nivel_flecha,
                 pepita,hierro,gema_bruto,roca,tronco,lingote_oro,lingote_hierro,gema,piedra,tabla_madera)){
             Intent i = new Intent(this,Index.class);
             startActivity(i);

@@ -7,6 +7,7 @@ import com.j256.ormlite.table.DatabaseTable;
 public class Personaje {
 
     public static final String ID_PERSONAJE = "_id_personaje";
+    public static final String FK_USUARIO="fk_usuario";
     public static final String NOMBRE_PERSONAJE = "nombre_personaje";
     public static final String NIVEL = "nivel";
     public static final String NIVEL_CASCO = "nivCasco";
@@ -33,8 +34,11 @@ public class Personaje {
 
     @DatabaseField(generatedId = true, columnName = ID_PERSONAJE)
     private int id_personaje;
+    @DatabaseField(columnName = FK_USUARIO)
+    private int fk_usuario;
     @DatabaseField(columnName = NOMBRE_PERSONAJE)
     private String nombre_personaje;
+
     @DatabaseField(columnName = NIVEL)
     private int nivel;
     @DatabaseField(columnName = NIVEL_CASCO)
@@ -85,8 +89,9 @@ public class Personaje {
 
     }
 
-    public Personaje(String nombre_personaje,int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha,
+    public Personaje(int fk_usuario,String nombre_personaje,int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha,
                      int pepita,int hierro,int gema_bruto,int roca,int tronco,int lingote_oro, int lingote_hierro, int gema, int piedra, int tabla_madera) {
+        this.fk_usuario=fk_usuario;
         this.nombre_personaje=nombre_personaje;
         this.nivel = nivel;
         this.nivCasco = nivCasco;
@@ -304,5 +309,11 @@ public class Personaje {
     }
     public void setTabla_madera(int tabla_madera) {
         this.tabla_madera = tabla_madera;
+    }
+    public int getFk_usuario() {
+        return fk_usuario;
+    }
+    public void setFk_usuario(int fk_usuario) {
+        this.fk_usuario = fk_usuario;
     }
 }
