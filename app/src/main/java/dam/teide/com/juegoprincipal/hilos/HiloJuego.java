@@ -44,8 +44,8 @@ public class HiloJuego extends AsyncTask<Void,Void,Void>{
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
+
         Intent i = new Intent(activity,Index.class);
-        i.putExtra("madera",activity.getPunMor());
         activity.startActivity(i);
     }
 
