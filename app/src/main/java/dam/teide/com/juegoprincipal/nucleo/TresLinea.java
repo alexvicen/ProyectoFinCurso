@@ -3,6 +3,7 @@ package dam.teide.com.juegoprincipal.nucleo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,9 +19,9 @@ public class TresLinea extends AppCompatActivity implements View.OnClickListener
     private ImageView arrayimg [][] = new ImageView [arraynum.length][arraynum[1].length];
     private Random r = new Random();
     private LinearLayout panelJuego;
-    private int contador=0,puntos=20,punNar=0,punRoj=0,punVer=0,punAzu=0,punMor=0;
+    private int contador=0,puntos=20,punRoca=0,punTronco=0,punHierro=0,punPepita=0,punMor=0;
     private ImageView casilla1,casilla2;
-    private TextView txtPuntos,txtNar,txtRoj,txtVer,txtAzu,txtMor;
+    private TextView txtPuntos,txtRoca,txtTronco,txtHierro,txtPepita,txtMor;
     private boolean play=false;
     private HiloJuego hj;
     @Override
@@ -29,18 +30,17 @@ public class TresLinea extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.tres_linea);
         panelJuego = (LinearLayout)findViewById(R.id.panelJuego);
         txtPuntos = (TextView)findViewById(R.id.txtPuntos);
-        txtNar=(TextView)findViewById(R.id.txtNar);
-        txtRoj=(TextView)findViewById(R.id.txtRoj);
-        txtVer=(TextView)findViewById(R.id.txtVer);
-        txtAzu=(TextView)findViewById(R.id.txtAzu);
+        txtRoca=(TextView)findViewById(R.id.txtRoca);
+        txtTronco=(TextView)findViewById(R.id.txtTronco);
+        txtHierro=(TextView)findViewById(R.id.txtHierro);
+        txtPepita=(TextView)findViewById(R.id.txtPepita);
         txtMor=(TextView)findViewById(R.id.txtMor);
         CrearArrayTablero();
         CrearImagenesTablero();
         CrearTablero();
         hj = new HiloJuego(this,puntos,arraynum,arrayimg);
         hj.execute();
-        hj.comprobarHorizontal();
-        hj.comprobarVertical();
+        while(hj.comprobarHorizontal());
         txtPuntos.setText(puntos+"");
         play=true;
     }
@@ -86,10 +86,13 @@ public class TresLinea extends AppCompatActivity implements View.OnClickListener
         for (int i = 0; i < arraynum.length; i++) {
             LinearLayout ll = new LinearLayout(this);
             ll.setOrientation(LinearLayout.HORIZONTAL);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+            lp.weight=1;
             for (int j = 0; j < arraynum[i].length; j++) {
-                ImageView iv = new ImageView(this);
+                ImageView iv;
                 iv = arrayimg[i][j];
                 iv.setTag(i + "" + j);
+                iv.setLayoutParams(lp);
                 iv.setOnClickListener(this);
                 ll.addView(iv);
             }
@@ -111,8 +114,7 @@ public class TresLinea extends AppCompatActivity implements View.OnClickListener
                 activarTodos();
             }else {
                 cambiarPosicion(casilla1, casilla2);
-                hj.comprobarVertical();
-                hj.comprobarHorizontal();
+                while(hj.comprobarHorizontal());
                 contador = 0;
                 movimientos();
                 activarTodos();
@@ -163,40 +165,40 @@ public class TresLinea extends AppCompatActivity implements View.OnClickListener
         return puntos;
     }
 
-    public int getPunNar() {
-        return punNar;
+    public int getPunRoca() {
+        return punRoca;
     }
 
-    public void setPunNar(int punNar) {
-        this.punNar = punNar;
-        txtNar.setText(punNar+"");
+    public void setPunRoca(int punRoca) {
+        this.punRoca = punRoca;
+        txtRoca.setText(punRoca+"");
     }
 
-    public int getPunRoj() {
-        return punRoj;
+    public int getPunTronco() {
+        return punTronco;
     }
 
-    public void setPunRoj(int punRoj) {
-        this.punRoj = punRoj;
-        txtRoj.setText(punRoj+"");
+    public void setPunTronco(int punTronco) {
+        this.punTronco = punTronco;
+        txtTronco.setText(punTronco+"");
     }
 
-    public int getPunAzu() {
-        return punAzu;
+    public int getPunPepita() {
+        return punPepita;
     }
 
-    public void setPunAzu(int punAzu) {
-        this.punAzu = punAzu;
-        txtAzu.setText(punAzu+"");
+    public void setPunPepita(int punPepita) {
+        this.punPepita = punPepita;
+        txtPepita.setText(punPepita+"");
     }
 
-    public int getPunVer() {
-        return punVer;
+    public int getPunHierro() {
+        return punHierro;
     }
 
-    public void setPunVer(int punVer) {
-        this.punVer = punVer;
-        txtVer.setText(punVer+"");
+    public void setPunHierro(int punHierro) {
+        this.punHierro = punHierro;
+        txtHierro.setText(punHierro+"");
     }
 
     public int getPunMor() {

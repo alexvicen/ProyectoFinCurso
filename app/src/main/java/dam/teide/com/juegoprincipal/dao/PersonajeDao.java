@@ -54,7 +54,7 @@ public class PersonajeDao extends DBHelperMOS{
         }
     }
     //FUNCIONES ACTUALIZAR
-    public void actualizarNombrePersonaje( Context context, String nombre_personaje) throws SQLException {
+    public static void actualizarNombrePersonaje( Context context, String nombre_personaje) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -62,7 +62,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    public void actualizarNivel( Context context, int nivel) throws SQLException {
+    public static void actualizarNivel( Context context, int nivel) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -74,7 +74,7 @@ public class PersonajeDao extends DBHelperMOS{
         actualizarVelocidad(context);
         actualizarCritico(context);
     }
-    public void actualizarNivelCasco( Context context, int nivelCasco) throws SQLException {
+    public static void actualizarNivelCasco( Context context, int nivelCasco) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -82,7 +82,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    public void actualizarNivelArco( Context context, int nivelArco) throws SQLException {
+    public static void actualizarNivelArco( Context context, int nivelArco) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -90,7 +90,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    public void actualizarNivelEscudo( Context context, int nivelEscudo) throws SQLException {
+    public static void actualizarNivelEscudo( Context context, int nivelEscudo) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -98,7 +98,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    public void actualizarNivelGuantes( Context context, int nivelGuantes) throws SQLException {
+    public static void actualizarNivelGuantes( Context context, int nivelGuantes) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -106,7 +106,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    public void actualizarNivelBotas( Context context, int nivelBotas) throws SQLException {
+    public static void actualizarNivelBotas( Context context, int nivelBotas) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -114,7 +114,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    public void actualizarNivelFlecha( Context context, int nivelFlecha) throws SQLException {
+    public static void actualizarNivelFlecha( Context context, int nivelFlecha) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -122,7 +122,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    public void actualizarPepita( Context context, int pepita) throws SQLException {
+    public static void actualizarPepita( Context context, int pepita) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -130,7 +130,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    public void actualizarHierro( Context context, int hierro) throws SQLException {
+    public static void actualizarHierro( Context context, int hierro) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -138,7 +138,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    public void actualizarGemaBruto( Context context, int gema_bruto) throws SQLException {
+    public static void actualizarGemaBruto( Context context, int gema_bruto) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -146,7 +146,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    public void actualizarRoca( Context context, int roca) throws SQLException {
+    public static void actualizarRoca( Context context, int roca) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -154,7 +154,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    public void actualizarTronco( Context context, int tronco) throws SQLException {
+    public static void actualizarTronco( Context context, int tronco) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -162,7 +162,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    public void actualizarLingoteOro( Context context, int lingote_oro) throws SQLException {
+    public static void actualizarLingoteOro( Context context, int lingote_oro) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -170,7 +170,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    public void actualizarLingoteHierro( Context context, int lingote_hierro) throws SQLException {
+    public static void actualizarLingoteHierro( Context context, int lingote_hierro) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -178,7 +178,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    public void actualizarGema( Context context, int gema) throws SQLException {
+    public static void actualizarGema( Context context, int gema) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -186,7 +186,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    public void actualizarPiedra( Context context, int piedra) throws SQLException {
+    public static void actualizarPiedra( Context context, int piedra) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -194,7 +194,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    public void actualizarTablaMadera( Context context, int tabla_madera) throws SQLException {
+    public static void actualizarTablaMadera( Context context, int tabla_madera) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -202,7 +202,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    private void actualizarVida( Context context) throws SQLException {
+    private static void actualizarVida( Context context) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -213,7 +213,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    private void actualizarAtaque( Context context) throws SQLException {
+    private static void actualizarAtaque( Context context) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -225,7 +225,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    private void actualizarDefensa( Context context) throws SQLException {
+    private static void actualizarDefensa( Context context) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -236,7 +236,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    private void actualizarVelocidad( Context context) throws SQLException {
+    private static void actualizarVelocidad( Context context) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);
@@ -248,7 +248,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
 
     }
-    private void actualizarCritico( Context context) throws SQLException {
+    private static void actualizarCritico( Context context) throws SQLException {
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,0);

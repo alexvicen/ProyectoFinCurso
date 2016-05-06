@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 import java.util.Random;
 
+import dam.teide.com.juegoprincipal.dao.PersonajeDao;
 import dam.teide.com.juegoprincipal.nucleo.Index;
 import dam.teide.com.juegoprincipal.nucleo.TresLinea;
 
@@ -45,11 +46,13 @@ public class HiloJuego extends AsyncTask<Void,Void,Void>{
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
 
+
+
         Intent i = new Intent(activity,Index.class);
         activity.startActivity(i);
     }
 
-    public void comprobarHorizontal(){
+    public boolean comprobarHorizontal(){
         int contadorHoriz = 0;
         for (int i = 0;i<arraynum.length;i++) {
             for (int j = 1; j < arraynum[i].length; j++) {
@@ -63,16 +66,16 @@ public class HiloJuego extends AsyncTask<Void,Void,Void>{
                         activity.cambiarPosicion(arrayimg[i][j - 1],arrayimg[r.nextInt(arraynum.length)][r.nextInt(arraynum.length)]);
                         activity.cambiarPosicion(arrayimg[i][j],arrayimg[r.nextInt(arraynum.length)][r.nextInt(arraynum.length)]);
                         activity.cambiarPosicion(arrayimg[i][j], arrayimg[r.nextInt(arraynum.length)][r.nextInt(arraynum.length)]);
-                        j=0;
-                        i=0;
+                        return true;
                     }
                 } else {
                     contadorHoriz = 0;
                 }
             }
         }
+        return comprobarVertical();
     }
-    public void comprobarVertical(){
+    public boolean comprobarVertical(){
         int contadorVertical=0;
         for (int i = 0; i < arraynum.length; i++) {
             for (int j = 1; j < arraynum[i].length; j++) {
@@ -81,29 +84,29 @@ public class HiloJuego extends AsyncTask<Void,Void,Void>{
                     if (contadorVertical == 2) {
                         contadorVertical = 0;
                         if (activity.isPlay()){
-                            sumarPuntos(arraynum[i][j]);
+                            sumarPuntos(arraynum[j][i]);
                         }
                         activity.cambiarPosicion(arrayimg[j - 1][i],arrayimg[r.nextInt(arraynum.length)][r.nextInt(arraynum.length)]);
                         activity.cambiarPosicion(arrayimg[j][i],arrayimg[r.nextInt(arraynum.length)][r.nextInt(arraynum.length)]);
                         activity.cambiarPosicion(arrayimg[j][i], arrayimg[r.nextInt(arraynum.length)][r.nextInt(arraynum.length)]);
-                        j=0;
-                        i=0;
+                        return true;
                     }
                 } else {
                     contadorVertical = 0;
                 }
             }
         }
+        return false;
     }
     public void sumarPuntos(int t){
         if (t==0){
-            activity.setPunNar(activity.getPunNar()+3);
+            activity.setPunRoca(activity.getPunRoca()+3);
         }else if (t==1){
-            activity.setPunRoj(activity.getPunRoj()+3);
+            activity.setPunTronco(activity.getPunTronco()+3);
         }else if (t==2){
-            activity.setPunVer(activity.getPunVer()+3);
+            activity.setPunHierro(activity.getPunHierro()+3);
         }else if (t==3){
-            activity.setPunAzu(activity.getPunAzu()+3);
+            activity.setPunPepita(activity.getPunPepita()+3);
         }else if (t==4){
             activity.setPunMor(activity.getPunMor()+3);
         }
