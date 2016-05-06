@@ -7,10 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.sql.SQLException;
 import java.util.Random;
 
 import dam.teide.com.juegoprincipal.R;
+import dam.teide.com.juegoprincipal.dao.PersonajeDao;
 import dam.teide.com.juegoprincipal.hilos.HiloJuego;
 
 public class TresLinea extends AppCompatActivity implements View.OnClickListener{
@@ -19,9 +22,9 @@ public class TresLinea extends AppCompatActivity implements View.OnClickListener
     private ImageView arrayimg [][] = new ImageView [arraynum.length][arraynum[1].length];
     private Random r = new Random();
     private LinearLayout panelJuego;
-    private int contador=0,puntos=20,punRoca=0,punTronco=0,punHierro=0,punPepita=0,punMor=0;
+    private int contador=0,puntos=20,punRoca=0,punTronco=0,punHierro=0,punPepita=0,punGemaBruto=0;
     private ImageView casilla1,casilla2;
-    private TextView txtPuntos,txtRoca,txtTronco,txtHierro,txtPepita,txtMor;
+    private TextView txtPuntos,txtRoca,txtTronco,txtHierro,txtPepita,txtGemaBruto;
     private boolean play=false;
     private HiloJuego hj;
     @Override
@@ -34,7 +37,7 @@ public class TresLinea extends AppCompatActivity implements View.OnClickListener
         txtTronco=(TextView)findViewById(R.id.txtTronco);
         txtHierro=(TextView)findViewById(R.id.txtHierro);
         txtPepita=(TextView)findViewById(R.id.txtPepita);
-        txtMor=(TextView)findViewById(R.id.txtMor);
+        txtGemaBruto=(TextView)findViewById(R.id.txtGemaBruto);
         CrearArrayTablero();
         CrearImagenesTablero();
         CrearTablero();
@@ -201,13 +204,13 @@ public class TresLinea extends AppCompatActivity implements View.OnClickListener
         txtHierro.setText(punHierro+"");
     }
 
-    public int getPunMor() {
-        return punMor;
+    public int getPunGemaBruto() {
+        return punGemaBruto;
     }
 
-    public void setPunMor(int punMor) {
-        this.punMor = punMor;
-        txtMor.setText(punMor+"");
+    public void setPunGemaBruto(int punGemaBruto) {
+        this.punGemaBruto = punGemaBruto;
+        txtGemaBruto.setText(punGemaBruto+"");
     }
     public void movimientos(){
         puntos--;

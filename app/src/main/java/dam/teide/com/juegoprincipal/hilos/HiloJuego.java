@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
+import java.sql.SQLException;
 import java.util.Random;
 
 import dam.teide.com.juegoprincipal.dao.PersonajeDao;
@@ -45,11 +46,18 @@ public class HiloJuego extends AsyncTask<Void,Void,Void>{
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-
-
-
+        try {
+            PersonajeDao.actualizarRoca(activity,activity.getPunRoca());
+            PersonajeDao.actualizarTronco(activity,activity.getPunTronco());
+            PersonajeDao.actualizarHierro(activity,activity.getPunHierro());
+            PersonajeDao.actualizarPepita(activity,activity.getPunPepita());
+            PersonajeDao.actualizarGemaBruto(activity,activity.getPunGemaBruto());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         Intent i = new Intent(activity,Index.class);
         activity.startActivity(i);
+        activity.finish();
     }
 
     public boolean comprobarHorizontal(){
@@ -108,7 +116,7 @@ public class HiloJuego extends AsyncTask<Void,Void,Void>{
         }else if (t==3){
             activity.setPunPepita(activity.getPunPepita()+3);
         }else if (t==4){
-            activity.setPunMor(activity.getPunMor()+3);
+            activity.setPunGemaBruto(activity.getPunGemaBruto()+3);
         }
     }
 

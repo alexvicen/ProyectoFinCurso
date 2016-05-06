@@ -116,7 +116,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="0"
-            android:id="@+id/txtMor"
+            android:id="@+id/txtGemaBruto"
             android:typeface="serif" />
     </LinearLayout>
 
