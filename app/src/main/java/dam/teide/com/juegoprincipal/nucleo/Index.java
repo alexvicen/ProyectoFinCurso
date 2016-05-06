@@ -32,11 +32,7 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
         btnJuegoPrincipal.setOnClickListener(this);
         btnHerreria.setOnClickListener(this);
         btnCerrarSesion.setOnClickListener(this);
-        /*try {
-            Toast.makeText(Index.this, PersonajeDao.buscarPersonaje(this).getFk_usuario()+"", Toast.LENGTH_SHORT).show();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }*/
+
     }
 
     @Override
