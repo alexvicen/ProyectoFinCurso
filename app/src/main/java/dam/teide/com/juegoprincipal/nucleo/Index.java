@@ -19,7 +19,7 @@ import dam.teide.com.juegoprincipal.hilos.HiloConexion;
 
 public class Index extends AppCompatActivity implements View.OnClickListener{
 
-    private Button btnCandy, btnJuegoPrincipal,btnHerreria,btnCerrarSesion;
+    private Button btnCandy, btnJuegoPrincipal,btnHerreria,btnCerrarSesion,btnProcesar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,15 +28,12 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
         btnHerreria = (Button)findViewById(R.id.btnHerreria);
         btnJuegoPrincipal = (Button)findViewById(R.id.btnJuegoPrincipal);
         btnCerrarSesion = (Button)findViewById(R.id.btnCerrarSesion);
+        btnProcesar = (Button)findViewById(R.id.btnProcesar);
         btnCandy.setOnClickListener(this);
         btnJuegoPrincipal.setOnClickListener(this);
         btnHerreria.setOnClickListener(this);
         btnCerrarSesion.setOnClickListener(this);
-        try {
-            Toast.makeText(Index.this, PersonajeDao.buscarPersonaje(this).getRoca()+"", Toast.LENGTH_SHORT).show();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        btnProcesar.setOnClickListener(this);
     }
 
     @Override
@@ -55,6 +52,11 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
                 break;
             case R.id.btnHerreria:
                 i = new Intent(this,Herreria.class);
+                startActivity(i);
+                finish();
+                break;
+            case R.id.btnProcesar:
+                i = new Intent(this,ProcesarMateriales.class);
                 startActivity(i);
                 finish();
                 break;
@@ -88,6 +90,7 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
                         nivel_guantes,nivel_botas,nivel_flecha,pepita,roca,tronco,hierro,gema_bruto,lingote_oro,lingote_hierro,gema,piedra,tabla_madera).execute();
 
                 break;
+
         }
     }
 
