@@ -99,17 +99,18 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
         }else{
             hem = new HiloEliminarMaterial(this,arrayList,v);
             TaskHelper.execute(hem);
+            arrayList.remove(v);
             v.setClickable(false);
             switch (v.getTag().toString()){
                 case "roca":
                     setRoca(-1);
-                    if (random.nextInt(3)==2){
+                    if (random.nextInt(5)==2){
                         movimiento1 = R.drawable.roca_rota;
                         v.setBackgroundResource(movimiento1);
                         animacion1 = (AnimationDrawable) v.getBackground();
                         animacion1.start();
                     }else {
-                        movimiento1 = R.drawable.roca_rota;
+                        movimiento1 = R.drawable.roca_trans;
                         v.setBackgroundResource(movimiento1);
                         animacion1 = (AnimationDrawable) v.getBackground();
                         animacion1.start();
@@ -118,14 +119,14 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
                     break;
                 case "tronco":
                     setTronco(-1);
-                    if (random.nextInt(3)==2){
+                    if (random.nextInt(5)==2){
                         movimiento1 = R.drawable.troncos_rotos;
                         v.setBackgroundResource(movimiento1);
                         animacion1 = (AnimationDrawable) v.getBackground();
                         animacion1.start();
 
                     }else {
-                        movimiento1 = R.drawable.troncos_rotos;
+                        movimiento1 = R.drawable.troncos_trans;
                         v.setBackgroundResource(movimiento1);
                         animacion1 = (AnimationDrawable) v.getBackground();
                         animacion1.start();
@@ -134,13 +135,13 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
                     break;
                 case "gema_bruto":
                     setGemaBruto(-1);
-                    if (random.nextInt(3)==2){
+                    if (random.nextInt(5)==2){
                         movimiento1 = R.drawable.gema_bruto_rota;
                         v.setBackgroundResource(movimiento1);
                         animacion1 = (AnimationDrawable) v.getBackground();
                         animacion1.start();
                     }else {
-                        movimiento1 = R.drawable.gema_bruto_rota;
+                        movimiento1 = R.drawable.gema_bruto_trans;
                         v.setBackgroundResource(movimiento1);
                         animacion1 = (AnimationDrawable) v.getBackground();
                         animacion1.start();
@@ -170,11 +171,11 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
     }
 
     public void TerminarJuego() throws SQLException {
-        PersonajeDao.actualizarGemaBruto(this,personaje.getGema_bruto()-getGemaBruto());
-        PersonajeDao.actualizarRoca(this,personaje.getRoca()-getRoca());
-        PersonajeDao.actualizarPepita(this,personaje.getPepita()-getOro());
-        PersonajeDao.actualizarHierro(this,personaje.getHierro()-getHierro());
-        PersonajeDao.actualizarTronco(this,personaje.getTronco()-getTronco());
+        PersonajeDao.actualizarGemaBruto(this,-(personaje.getGema_bruto()-getGemaBruto()));
+        PersonajeDao.actualizarRoca(this,-(personaje.getRoca()-getRoca()));
+        PersonajeDao.actualizarPepita(this,-(personaje.getPepita()-getOro()));
+        PersonajeDao.actualizarHierro(this,-(personaje.getHierro()-getHierro()));
+        PersonajeDao.actualizarTronco(this,-(personaje.getTronco()-getTronco()));
 
         PersonajeDao.actualizarGema(this,getGema());
         PersonajeDao.actualizarPiedra(this,getPiedra());

@@ -24,6 +24,7 @@ public class HiloCrearElementoProcesa extends AsyncTask<Void,Void,Void>{
     private Random random = new Random();
     private ArrayList<ImageView> arrayList;
     private int tiempo=0,minutos,segundos;
+    private boolean mat=true;
 
     public HiloCrearElementoProcesa(ProcesarMateriales activity,ArrayList<ImageView>arrayList) {
         this.activity = activity;
@@ -32,13 +33,11 @@ public class HiloCrearElementoProcesa extends AsyncTask<Void,Void,Void>{
 
     @Override
     protected Void doInBackground(Void... params) {
-        while (activity.isPlaying()&&minutos<1&&(activity.getRoca()>0||activity.getTronco()>0||activity.getGemaBruto()>0||activity.getHierro()>0||activity.getOro()>0)) {
+        while (activity.isPlaying()&&minutos<1&&mat) {
             try {
                 publishProgress();
-                Thread.sleep(500);
-                publishProgress();
-                Thread.sleep(500);
-                tiempo+=1000;
+                Thread.sleep(333);
+                tiempo+=333;
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -67,27 +66,77 @@ public class HiloCrearElementoProcesa extends AsyncTask<Void,Void,Void>{
         ImageView iv = new ImageView(activity);
         iv.setX(random.nextInt(ancho-90)+10);
         iv.setY(-40);
-        int material = random.nextInt(100);
-        if (material<=20){
-            iv.setBackgroundResource(R.drawable.roca);
-            iv.setTag("roca");
-        }else if (material<=40){
-            iv.setBackgroundResource(R.drawable.troncos);
-            iv.setTag("tronco");
-        }else if (material<=60){
-            iv.setBackgroundResource(R.drawable.gema_bruto);
-            iv.setTag("gema_bruto");
-        }else if (material<=80){
-            iv.setBackgroundResource(R.drawable.hierro);
-            iv.setTag("hierro");
-        }else{
-            iv.setBackgroundResource(R.drawable.pepita);
-            iv.setTag("pepita");
+
+        int contador = 0;
+        if (activity.getOro()!=0){
+            contador++;
+        }
+        if (activity.getRoca()!=0){
+            contador++;
+        }
+        if (activity.getTronco()!=0){
+            contador++;
+        }
+        if (activity.getGemaBruto()!=0){
+            contador++;
+        }
+        if (activity.getHierro()!=0){
+            contador++;
+        }
+        int material = random.nextInt(contador)+1;
+        int b=0;
+        if (activity.getRoca()>0&&material>0){
+            material--;
+            b=1;
+        }
+        if (activity.getTronco()>0&&material>0){
+            material--;
+            b=2;
+        }
+        if (activity.getGemaBruto()>0&&material>0){
+            material--;
+            b=3;
+        }
+        if (activity.getHierro()>0&&material>0){
+            material--;
+            b=4;
+        }
+        if (activity.getOro()>0&&material>0){
+            b=5;
+        }
+        switch (b){
+            case 1:
+                iv.setBackgroundResource(R.drawable.roca);
+                iv.setTag("roca");
+                activity.setRoca(-1);
+                break;
+            case 2:
+                iv.setBackgroundResource(R.drawable.troncos);
+                iv.setTag("tronco");
+                activity.setTronco(-1);
+                break;
+            case 3:
+                iv.setBackgroundResource(R.drawable.gema_bruto);
+                iv.setTag("gema_bruto");
+                activity.setGemaBruto(-1);
+                break;
+            case 4:
+                iv.setBackgroundResource(R.drawable.hierro);
+                iv.setTag("hierro");
+                activity.setHierro(-1);
+                break;
+            case 5:
+                iv.setBackgroundResource(R.drawable.pepita);
+                iv.setTag("pepita");
+                activity.setOro(-1);
+                break;
         }
         arrayList.add(iv);
         iv.setOnClickListener(activity);
         llJuego.addView(iv);
-
+        if (activity.getRoca()==0&&activity.getTronco()==0&&activity.getGemaBruto()==0&&activity.getHierro()==0&&activity.getOro()==0){
+            mat=false;
+        }
         super.onProgressUpdate(values);
     }
 

@@ -4,5 +4,5 @@ android:oneshot="true">
 <item android:drawable="@drawable/troncos_rotos1" android:duration="100" />
 <item android:drawable="@drawable/troncos_rotos2" android:duration="100" />
 <item android:drawable="@drawable/troncos_rotos3" android:duration="100" />
-<item android:drawable="@drawable/tablas_madera" android:duration="100" />
+<item android:drawable="@drawable/tablas_madera" android:duration="250" />
 </animation-list>

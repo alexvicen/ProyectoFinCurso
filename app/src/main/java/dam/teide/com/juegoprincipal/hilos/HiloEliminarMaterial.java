@@ -23,7 +23,7 @@ public class HiloEliminarMaterial extends AsyncTask<Void,Void,Void>{
     @Override
     protected Void doInBackground(Void... params) {
         try {
-            Thread.sleep(300);
+            Thread.sleep(550);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -34,7 +34,6 @@ public class HiloEliminarMaterial extends AsyncTask<Void,Void,Void>{
     @Override
     protected void onProgressUpdate(Void... values) {
         super.onProgressUpdate(values);
-        arrayList.remove(iv);
         activity.getLlJuego().removeView(iv);
     }
 

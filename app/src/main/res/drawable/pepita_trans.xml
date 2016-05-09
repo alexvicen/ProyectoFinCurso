@@ -4,5 +4,5 @@ android:oneshot="true">
 <item android:drawable="@drawable/pepita_rota1" android:duration="100" />
 <item android:drawable="@drawable/pepita_rota2" android:duration="100" />
 <item android:drawable="@drawable/pepita_rota3" android:duration="100" />
-<item android:drawable="@drawable/lingote_oro" android:duration="100" />
+<item android:drawable="@drawable/lingote_oro" android:duration="250" />
 </animation-list>
