@@ -1,6 +1,7 @@
 package dam.teide.com.juegoprincipal.nucleo;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,10 +21,10 @@ import dam.teide.com.juegoprincipal.dao.PersonajeDao;
 import dam.teide.com.juegoprincipal.entidades.Personaje;
 import dam.teide.com.juegoprincipal.hilos.HiloBajaProcesa;
 import dam.teide.com.juegoprincipal.hilos.HiloCrearElementoProcesa;
+import dam.teide.com.juegoprincipal.hilos.HiloEliminarMaterial;
 import dam.teide.com.juegoprincipal.hilos.TaskHelper;
 
 public class ProcesarMateriales extends AppCompatActivity implements View.OnClickListener{
-
     private TextView txtRoca,txtTronco,txtHierro,txtOro,txtGemaBruto,txtPiedra,txtTablasMadera,txtLingoteHierro,txtLingoteOro,txtGema;
     private int roca,tronco,hierro,oro,gemaBruto,piedra,tablasMadera,lingoteHierro,lingoteOro,gema;
     private TextView txtTiempo;
@@ -34,7 +35,11 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
     private ArrayList<ImageView> arrayList = new ArrayList<>();
     private HiloCrearElementoProcesa hcep;
     private HiloBajaProcesa hbp;
+    private HiloEliminarMaterial hem;
     private Random random = new Random();
+
+    private AnimationDrawable animacion1 = new AnimationDrawable();
+    private int movimiento1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,42 +97,72 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
             btnJugar.setVisibility(View.INVISIBLE);
             btnJugar.setEnabled(false);
         }else{
-
+            hem = new HiloEliminarMaterial(this,arrayList,v);
+            TaskHelper.execute(hem);
+            v.setClickable(false);
             switch (v.getTag().toString()){
                 case "roca":
                     setRoca(-1);
                     if (random.nextInt(3)==2){
-
+                        movimiento1 = R.drawable.roca_rota;
+                        v.setBackgroundResource(movimiento1);
+                        animacion1 = (AnimationDrawable) v.getBackground();
+                        animacion1.start();
                     }else {
-                        setPiedra(1);
+                        movimiento1 = R.drawable.roca_rota;
+                        v.setBackgroundResource(movimiento1);
+                        animacion1 = (AnimationDrawable) v.getBackground();
+                        animacion1.start();
+                        setRoca(1);
                     }
                     break;
                 case "tronco":
                     setTronco(-1);
                     if (random.nextInt(3)==2){
+                        movimiento1 = R.drawable.troncos_rotos;
+                        v.setBackgroundResource(movimiento1);
+                        animacion1 = (AnimationDrawable) v.getBackground();
+                        animacion1.start();
 
                     }else {
+                        movimiento1 = R.drawable.troncos_rotos;
+                        v.setBackgroundResource(movimiento1);
+                        animacion1 = (AnimationDrawable) v.getBackground();
+                        animacion1.start();
                         setTablasMadera(1);
                     }
                     break;
                 case "gema_bruto":
                     setGemaBruto(-1);
                     if (random.nextInt(3)==2){
-
+                        movimiento1 = R.drawable.gema_bruto_rota;
+                        v.setBackgroundResource(movimiento1);
+                        animacion1 = (AnimationDrawable) v.getBackground();
+                        animacion1.start();
                     }else {
+                        movimiento1 = R.drawable.gema_bruto_rota;
+                        v.setBackgroundResource(movimiento1);
+                        animacion1 = (AnimationDrawable) v.getBackground();
+                        animacion1.start();
                         setGema(1);
                     }
                     break;
                 case "hierro":
                     setHierro(-1);
+                    movimiento1 = R.drawable.hierro_roto;
+                    v.setBackgroundResource(movimiento1);
+                    animacion1 = (AnimationDrawable) v.getBackground();
+                    animacion1.start();
                     break;
                 case "pepita":
                     setOro(-1);
+                    movimiento1 = R.drawable.pepita_rota;
+                    v.setBackgroundResource(movimiento1);
+                    animacion1 = (AnimationDrawable) v.getBackground();
+                    animacion1.start();
                     break;
             }
-            arrayList.remove(v);
-            llJuego.removeView(v);
-            if (arrayList.size()==0&&hcep.getStatus()== AsyncTask.Status.FINISHED){
+            if (arrayList.size()==0&&hcep.getStatus()== HiloCrearElementoProcesa.Status.FINISHED){
                 hbp.cancel(true);
             }
         }
