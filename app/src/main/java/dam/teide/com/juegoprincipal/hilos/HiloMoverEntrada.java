@@ -75,6 +75,10 @@ public class HiloMoverEntrada extends AsyncTask<Void,Void,Void>{
             activity.getTxt1().setVisibility(View.VISIBLE);
             activity.getTxt2().setVisibility(View.VISIBLE);
             activity.getTxt3().setVisibility(View.VISIBLE);
+            activity.getTxtNivelPersonaje().setVisibility(View.VISIBLE);
+            activity.getTxtNivelEsqueleto1().setVisibility(View.VISIBLE);
+            activity.getTxtNivelEsqueleto2().setVisibility(View.VISIBLE);
+            activity.getTxtNivelEsqueleto3().setVisibility(View.VISIBLE);
             activity.getPbVida().setVisibility(View.VISIBLE);
             activity.getPb1().setVisibility(View.VISIBLE);
             activity.getPb2().setVisibility(View.VISIBLE);

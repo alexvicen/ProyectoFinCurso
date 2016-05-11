@@ -31,7 +31,15 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="0"
             android:id="@+id/txtvida"
-            android:layout_marginRight="100dp"
+            android:typeface="serif" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="(1)"
+            android:id="@+id/txtNivelPersonaje"
+            android:layout_marginRight="50dp"
             android:typeface="serif" />
 
         <ProgressBar
@@ -50,6 +58,14 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="100"
             android:id="@+id/txt1"
+            android:typeface="serif" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="(1)"
+            android:id="@+id/txtNivelEsqueleto1"
             android:layout_marginRight="50dp"
             android:typeface="serif" />
 
@@ -69,6 +85,14 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="100"
             android:id="@+id/txt2"
+            android:typeface="serif" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="(1)"
+            android:id="@+id/txtNivelEsqueleto2"
             android:layout_marginRight="50dp"
             android:typeface="serif" />
 
@@ -88,6 +112,14 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="100"
             android:id="@+id/txt3"
+            android:typeface="serif" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="(1)"
+            android:id="@+id/txtNivelEsqueleto3"
             android:typeface="serif" />
     </LinearLayout>
 

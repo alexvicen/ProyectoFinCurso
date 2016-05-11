@@ -18,6 +18,7 @@ public class Personaje {
     public static final String NIVEL_FLECHA = "nivFlecha";
     public static final String VIDA = "vida";
     public static final String ATAQUE = "ataque";
+    public static final String MAGIA = "magia";
     public static final String DEFENSA = "defensa";
     public static final String VELOCIDAD = "velocidad";
     public static final String CRITICO = "critico";
@@ -38,7 +39,6 @@ public class Personaje {
     private int fk_usuario;
     @DatabaseField(columnName = NOMBRE_PERSONAJE)
     private String nombre_personaje;
-
     @DatabaseField(columnName = NIVEL)
     private int nivel;
     @DatabaseField(columnName = NIVEL_CASCO)
@@ -57,13 +57,14 @@ public class Personaje {
     private int vida;
     @DatabaseField(columnName = ATAQUE)
     private int ataque;
+    @DatabaseField(columnName = MAGIA)
+    private int magia;
     @DatabaseField(columnName = DEFENSA)
     private int defensa;
     @DatabaseField(columnName = VELOCIDAD)
     private int velocidad;
     @DatabaseField(columnName = CRITICO)
     private int critico;
-
     @DatabaseField(columnName = PEPITA)
     private int pepita;
     @DatabaseField(columnName = HIERRO)
@@ -112,6 +113,7 @@ public class Personaje {
         this.tabla_madera=tabla_madera;
         this.vida = Vida(nivel,nivCasco);
         this.ataque = Ataque(nivel,nivArco,nivFlecha);
+        this.magia = Magia(nivel,nivGuantes);
         this.defensa = Defensa(nivel,nivEscudo);
         this.velocidad = Velocidad(nivel,nivBotas,nivGuantes);
         this.critico=Critico(nivel,nivArco,nivGuantes,nivFlecha);
@@ -133,6 +135,7 @@ public class Personaje {
 
         this.vida = Vida(nivel,nivCasco);
         this.ataque = Ataque(nivel,nivArco,nivFlecha);
+        this.magia = Magia(nivel,nivGuantes);
         this.defensa = Defensa(nivel,nivEscudo);
         this.velocidad = Velocidad(nivel,nivBotas,nivGuantes);
         this.critico=Critico(nivel,nivArco,nivGuantes,nivFlecha);
@@ -145,6 +148,11 @@ public class Personaje {
     private int Ataque(int nivel, int arco,int flecha){
         int resulata;
         resulata = (nivel*3)+(arco*2)+(flecha);
+        return resulata;
+    }
+    private int Magia(int nivel, int guantes){
+        int resulata;
+        resulata = (nivel*3)+(guantes*2);
         return resulata;
     }
     private int Defensa(int nivel,int escudo){
@@ -228,6 +236,12 @@ public class Personaje {
     }
     public void setAtaque(int ataque) {
         this.ataque = ataque;
+    }
+    public int getMagia() {
+        return magia;
+    }
+    public void setMagia(int magia) {
+        this.magia = magia;
     }
     public int getDefensa() {
         return defensa;

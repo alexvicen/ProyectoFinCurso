@@ -5,6 +5,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -59,6 +60,8 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        Toast.makeText(activity, "entra hilo ataque esqueleto", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -226,6 +229,7 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
+        Toast.makeText(activity, "sale hilo ataque esqueleto", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(activity,Index.class);
         activity.startActivity(i);
     }

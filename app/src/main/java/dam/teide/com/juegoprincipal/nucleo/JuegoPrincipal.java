@@ -10,7 +10,11 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.sql.SQLException;
+import java.util.Random;
+
 import dam.teide.com.juegoprincipal.R;
+import dam.teide.com.juegoprincipal.dao.PersonajeDao;
 import dam.teide.com.juegoprincipal.entidades.Esqueleto;
 import dam.teide.com.juegoprincipal.entidades.Personaje;
 import dam.teide.com.juegoprincipal.hilos.HiloAtaqueEnemigos;
@@ -28,27 +32,41 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
     private int movimiento1, movimiento2, movimiento3,movimiento4;
     private ImageView ivPer,iv1, iv2, iv3;
     private int ancho, alto;
-    private TextView txt1, txt2,txt3,txtVida;
+    private TextView txt1, txt2,txt3,txtVida,txtNivelPersonaje,txtNivelEsqueleto1,txtNivelEsqueleto2,txtNivelEsqueleto3;
     private Button btnJugar,btnSimple,btnEspecial;
     private ProgressBar pbVida,pb1,pb2,pb3;
     private boolean encendido = true,ataque=true,ataquePer=true,ataqueEsp=true,enem1=false,enem2=false,enem3=false;
     private HiloMoverEntrada hm;
     private HiloAtaqueEnemigos ha;
     private TaskHelper t = new TaskHelper();
-    private Personaje personaje = new Personaje(2);
-    private Esqueleto esqueleto1 = new Esqueleto(1);
-    private Esqueleto esqueleto2 = new Esqueleto(2);
-    private Esqueleto esqueleto3 = new Esqueleto(3);
+    private Personaje personaje;
+
+    private Random r = new Random();
+    private Esqueleto esqueleto1;
+    private Esqueleto esqueleto2;
+    private Esqueleto esqueleto3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.juego_principal);
+        try {
+            personaje = PersonajeDao.buscarPersonaje(this);
+            esqueleto1 = new Esqueleto(r.nextInt(personaje.getNivel()+4)-2);
+            esqueleto2 = new Esqueleto(r.nextInt(personaje.getNivel()+4)-2);
+            esqueleto3 = new Esqueleto(r.nextInt(personaje.getNivel()+4)-2);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         rl = (RelativeLayout) findViewById(R.id.rl);
         txtVida = (TextView)findViewById(R.id.txtvida);
         txt1 = (TextView) findViewById(R.id.txt1);
         txt2 = (TextView) findViewById(R.id.txt2);
         txt3 = (TextView)findViewById(R.id.txt3);
+        txtNivelPersonaje = (TextView)findViewById(R.id.txtNivelPersonaje);
+        txtNivelEsqueleto1 = (TextView)findViewById(R.id.txtNivelEsqueleto1);
+        txtNivelEsqueleto2 = (TextView)findViewById(R.id.txtNivelEsqueleto2);
+        txtNivelEsqueleto3 = (TextView)findViewById(R.id.txtNivelEsqueleto3);
         btnJugar = (Button) findViewById(R.id.btn);
         btnSimple = (Button) findViewById(R.id.btnSimple);
         btnEspecial = (Button) findViewById(R.id.btnEspecial);
@@ -66,27 +84,32 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
         txt1.setVisibility(View.INVISIBLE);
         txt2.setVisibility(View.INVISIBLE);
         txt3.setVisibility(View.INVISIBLE);
+        txtNivelPersonaje.setVisibility(View.INVISIBLE);
+        txtNivelEsqueleto1.setVisibility(View.INVISIBLE);
+        txtNivelEsqueleto2.setVisibility(View.INVISIBLE);
+        txtNivelEsqueleto3.setVisibility(View.INVISIBLE);
         pbVida.setVisibility(View.INVISIBLE);
         pb1.setVisibility(View.INVISIBLE);
         pb2.setVisibility(View.INVISIBLE);
         pb3.setVisibility(View.INVISIBLE);
-        btnJugar.setBackground(getDrawable(R.drawable.boton));
-        btnSimple.setBackground(getDrawable(R.drawable.boton));
-        btnEspecial.setBackground(getDrawable(R.drawable.boton));
 
         txtVida.setText(personaje.getVida() + "");
+        txtNivelPersonaje.setText("("+personaje.getNivel()+")");
         pbVida.setMax(personaje.getVida());
         pbVida.setProgress(personaje.getVida());
 
         txt1.setText(esqueleto1.getVida() + "");
+        txtNivelEsqueleto1.setText("("+esqueleto1.getNivel()+")");
         pb1.setMax(esqueleto1.getVida());
         pb1.setProgress(esqueleto1.getVida());
 
         txt2.setText(esqueleto2.getVida()+"");
+        txtNivelEsqueleto2.setText("("+esqueleto2.getNivel()+")");
         pb2.setMax(esqueleto2.getVida());
         pb2.setProgress(esqueleto2.getVida());
 
         txt3.setText(esqueleto3.getVida()+"");
+        txtNivelEsqueleto3.setText("("+esqueleto3.getNivel()+")");
         pb3.setMax(esqueleto3.getVida());
         pb3.setProgress(esqueleto3.getVida());
 
@@ -189,6 +212,9 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
     public boolean isAtaqueEsp() {
         return ataqueEsp;
     }
+    public void setAtaqueEsp(boolean ataqueEsp) {
+        this.ataqueEsp = ataqueEsp;
+    }
     public Personaje getPersonaje() {
         return personaje;
     }
@@ -212,6 +238,18 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
     }
     public TextView getTxt3() {
         return txt3;
+    }
+    public TextView getTxtNivelPersonaje() {
+        return txtNivelPersonaje;
+    }
+    public TextView getTxtNivelEsqueleto1() {
+        return txtNivelEsqueleto1;
+    }
+    public TextView getTxtNivelEsqueleto2() {
+        return txtNivelEsqueleto2;
+    }
+    public TextView getTxtNivelEsqueleto3() {
+        return txtNivelEsqueleto3;
     }
     public ProgressBar getPb1() {
         return pb1;
@@ -367,5 +405,50 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
         if (esqueleto1.getVida()<1&&esqueleto2.getVida()<1&&esqueleto3.getVida()<1){
             encendido=false;
         }
+    }
+    public void bajarVidaEnemigoEspecial(Esqueleto esqueleto){
+
+        if (esqueleto==esqueleto1){
+            int daño = (personaje.getAtaque() + personaje.getMagia() - (esqueleto1.getDefensa()));
+            if (daño<0){
+                daño=0;
+            }
+            esqueleto1.setVida(esqueleto1.getVida()-daño);
+            if (esqueleto1.getVida()<0){
+                esqueleto1.setVida(0);
+                enem1=true;
+            }
+            pb1.setProgress(esqueleto1.getVida());
+            txt1.setText(esqueleto1.getVida()+"");
+        }else if (esqueleto==esqueleto2){
+            int daño= (personaje.getAtaque() + personaje.getMagia()-(esqueleto2.getDefensa()));
+            if (daño<0){
+                daño=0;
+            }
+            esqueleto2.setVida(esqueleto2.getVida() - daño);
+            if (esqueleto2.getVida()<0){
+                esqueleto2.setVida(0);
+                enem2=true;
+            }
+            pb2.setProgress(esqueleto2.getVida());
+            txt2.setText(esqueleto2.getVida()+"");
+        }else if (esqueleto==esqueleto3){
+            int daño =  (personaje.getAtaque() + personaje.getMagia()-(esqueleto3.getDefensa()));
+            if (daño<0){
+                daño=0;
+            }
+            esqueleto3.setVida(esqueleto3.getVida() - daño);
+            if (esqueleto3.getVida()<0){
+                esqueleto3.setVida(0);
+                enem3=true;
+            }
+            pb3.setProgress(esqueleto3.getVida());
+            txt3.setText(esqueleto3.getVida()+"");
+        }
+        if ((esqueleto1.getVida()<1)&&(esqueleto2.getVida()<1)&&(esqueleto3.getVida()<1)){
+            encendido=false;
+        }
+
+
     }
 }

@@ -1,5 +1,6 @@
 package dam.teide.com.juegoprincipal.hilos;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
@@ -7,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import dam.teide.com.juegoprincipal.R;
 import dam.teide.com.juegoprincipal.nucleo.ProcesarMateriales;
 
 public class HiloBajaProcesa extends AsyncTask<Void,Void,Void> {
@@ -45,13 +47,13 @@ public class HiloBajaProcesa extends AsyncTask<Void,Void,Void> {
     protected void onProgressUpdate(Void... values) {
         for (int i = 0; i <arrayList.size() ; i++) {
             arrayList.get(i).setY(arrayList.get(i).getY()+2);
-            if (arrayList.get(i).getY()>=activity.getLlJuego().getHeight()-20){
-
+            if (arrayList.get(i).getY()>=activity.getLlJuego().getHeight()-200){
                 switch (arrayList.get(i).getTag().toString()){
                     case "hierro":
                         if (random.nextInt(3)==2){
 
                         }else{
+
                             activity.setLingoteHierro(1);
                         }
                         break;
@@ -60,6 +62,7 @@ public class HiloBajaProcesa extends AsyncTask<Void,Void,Void> {
 
                         }else {
                             activity.setLingoteOro(1);
+
                         }
                         break;
                 }

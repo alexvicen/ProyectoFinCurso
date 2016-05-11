@@ -21,6 +21,9 @@ public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
     private int movimientoPer;
     private AnimationDrawable animacionPer;
     private Random r = new Random();
+    private ImageView v1 ;
+    private ImageView v2;
+    private ImageView v3;
 
     public HiloAtaquePersonaje(JuegoPrincipal activity, ImageView iv1, ImageView iv2, ImageView iv3, ImageView ivPer) {
         this.activity = activity;
@@ -42,6 +45,19 @@ public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        if (activity.isAtaqueEsp()) {
+                try {
+                    publishProgress(4);
+                    Thread.sleep(50);
+                    publishProgress(5);
+                    Thread.sleep(50);
+                    publishProgress(6);
+                    Thread.sleep(50);
+                    publishProgress(7);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+        }
         if (!activity.isAtaqueEsp()) {
             while (activity.isAtaquePer()) {
                 try {
@@ -60,6 +76,7 @@ public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        Toast.makeText(activity, "entra hilo ataque personaje", Toast.LENGTH_SHORT).show();
         activity.getBtnEspecial().setVisibility(View.INVISIBLE);
         activity.getBtnSimple().setVisibility(View.INVISIBLE);
     }
@@ -67,7 +84,6 @@ public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
-
         switch (values[0]){
             case 0:
                 if(activity.getEsqueleto1().getVida()>0){
@@ -129,7 +145,6 @@ public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
 
                 metaX3=iv3.getX();
                 aumX3=metaX3/ivPer.getX();
-                Toast.makeText(activity, vel+" / ", Toast.LENGTH_SHORT).show();
                 movimientoPer = R.drawable.ataque_chico;
                 ivPer.setBackgroundResource(0);
                 ivPer.setBackgroundResource(movimientoPer);
@@ -198,6 +213,10 @@ public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
                     }
                     activity.getRl().removeView(flechaPer3);
                 }
+                if (activity.getEsqueleto1().getVida()<=0&&activity.getEsqueleto2().getVida()<=0&&activity.getEsqueleto3().getVida()<=0){
+                    activity.setEncendido(false);
+                    activity.setAtaquePer(false);
+                }
                 break;
             case 3:
                 movimientoPer = R.drawable.ataque_especial_chico;
@@ -207,7 +226,71 @@ public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
                 animacionPer.start();
                 break;
             case 4:
-
+                if(activity.getEsqueleto1().getVida()>0){
+                    v1 = new ImageView(activity);
+                    v1.setX(iv1.getX()+50);
+                    v1.setY(iv1.getY()-300);
+                    v1.setBackgroundResource(R.drawable.rayo);
+                    v1.setAlpha(0.5f);
+                    activity.getRl().addView(v1);
+                }
+                if(activity.getEsqueleto2().getVida()>0){
+                    v2 = new ImageView(activity);
+                    v2.setX(iv2.getX()+50);
+                    v2.setY(iv2.getY()-300);
+                    v2.setBackgroundResource(R.drawable.rayo);
+                    activity.getRl().addView(v2);
+                }
+                if(activity.getEsqueleto3().getVida()>0){
+                    v3 = new ImageView(activity);
+                    v3.setX(iv3.getX()+50);
+                    v3.setY(iv3.getY()-300);
+                    v3.setBackgroundResource(R.drawable.rayo);
+                    v3.setAlpha(0.5f);
+                    activity.getRl().addView(v3);
+                }
+                break;
+            case 5:
+                if(activity.getEsqueleto1().getVida()>0){
+                    v1.setAlpha(1f);
+                }
+                if(activity.getEsqueleto2().getVida()>0){
+                    v2.setAlpha(0.5f);
+                }
+                if(activity.getEsqueleto3().getVida()>0){
+                    v3.setAlpha(1f);
+                }
+                break;
+            case 6:
+                if(activity.getEsqueleto1().getVida()>0){
+                    v1.setAlpha(0.5f);
+                }
+                if(activity.getEsqueleto2().getVida()>0){
+                    v2.setAlpha(1f);
+                }
+                if(activity.getEsqueleto3().getVida()>0){
+                v3.setAlpha(0.5f);
+                }
+                break;
+            case 7:
+                if(activity.getEsqueleto1().getVida()>0){
+                    activity.getRl().removeView(v1);
+                    activity.bajarVidaEnemigoEspecial(activity.getEsqueleto1());
+                }else{
+                    activity.setAtaquePer(false);
+                }
+                if(activity.getEsqueleto2().getVida()>0){
+                    activity.getRl().removeView(v2);
+                    activity.bajarVidaEnemigoEspecial(activity.getEsqueleto2());
+                }
+                if(activity.getEsqueleto3().getVida()>0){
+                    activity.getRl().removeView(v3);
+                    activity.bajarVidaEnemigoEspecial(activity.getEsqueleto3());
+                }
+                if (activity.getEsqueleto1().getVida()<=0&&activity.getEsqueleto2().getVida()<=0&&activity.getEsqueleto3().getVida()<=0){
+                    activity.setEncendido(false);
+                    activity.setAtaquePer(false);
+                }
                 break;
         }
     }
@@ -215,6 +298,7 @@ public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
+        Toast.makeText(activity, "sale hilo ataque personaje", Toast.LENGTH_SHORT).show();
         activity.getBtnEspecial().setVisibility(View.VISIBLE);
         activity.getBtnSimple().setVisibility(View.VISIBLE);
         if(activity.getEsqueleto1().getVida()>0) {

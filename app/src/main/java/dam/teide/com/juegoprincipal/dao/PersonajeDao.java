@@ -70,6 +70,7 @@ public class PersonajeDao extends DBHelperMOS{
         updateBuilder.update();
         actualizarVida(context);
         actualizarAtaque(context);
+        actualizarMagia(context);
         actualizarDefensa(context);
         actualizarVelocidad(context);
         actualizarCritico(context);
@@ -219,7 +220,7 @@ public class PersonajeDao extends DBHelperMOS{
         int nivel = PersonajeDao.buscarPersonaje(context).getNivel();
         int casco = PersonajeDao.buscarPersonaje(context).getNivCasco();
         int vida = (nivel*100)+(casco*5);
-        updateBuilder.updateColumnValue(Personaje.NIVEL_CASCO, vida);
+        updateBuilder.updateColumnValue(Personaje.VIDA, vida);
         updateBuilder.update();
 
     }
@@ -231,7 +232,18 @@ public class PersonajeDao extends DBHelperMOS{
         int arco = PersonajeDao.buscarPersonaje(context).getNivArco();
         int flecha = PersonajeDao.buscarPersonaje(context).getNivFlecha();
         int ataque = (nivel*3)+(arco*2)+(flecha);
-        updateBuilder.updateColumnValue(Personaje.NIVEL_CASCO, ataque);
+        updateBuilder.updateColumnValue(Personaje.ATAQUE, ataque);
+        updateBuilder.update();
+
+    }
+    private static void actualizarMagia( Context context) throws SQLException {
+        cargarDao(context);
+        UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
+        updateBuilder.where().eq(Personaje.ID_PERSONAJE,buscarPersonaje(context).getId_personaje());
+        int nivel = PersonajeDao.buscarPersonaje(context).getNivel();
+        int guantes = PersonajeDao.buscarPersonaje(context).getNivGuantes();
+        int magia = (nivel*3)+(guantes*2);
+        updateBuilder.updateColumnValue(Personaje.MAGIA, magia);
         updateBuilder.update();
 
     }
@@ -242,7 +254,7 @@ public class PersonajeDao extends DBHelperMOS{
         int nivel = PersonajeDao.buscarPersonaje(context).getNivel();
         int escudo = PersonajeDao.buscarPersonaje(context).getNivEscudo();
         int defensa = (nivel*3)+(escudo*2);
-        updateBuilder.updateColumnValue(Personaje.NIVEL_CASCO, defensa);
+        updateBuilder.updateColumnValue(Personaje.DEFENSA, defensa);
         updateBuilder.update();
 
     }
@@ -254,7 +266,7 @@ public class PersonajeDao extends DBHelperMOS{
         int botas = PersonajeDao.buscarPersonaje(context).getNivBotas();
         int guantes = PersonajeDao.buscarPersonaje(context).getNivGuantes();
         int velocidad =(nivel*3)+(botas*2)+(guantes);;
-        updateBuilder.updateColumnValue(Personaje.NIVEL_CASCO, velocidad);
+        updateBuilder.updateColumnValue(Personaje.VELOCIDAD, velocidad);
         updateBuilder.update();
 
     }
@@ -267,7 +279,7 @@ public class PersonajeDao extends DBHelperMOS{
         int guantes = PersonajeDao.buscarPersonaje(context).getNivGuantes();
         int flecha = PersonajeDao.buscarPersonaje(context).getNivFlecha();
         int critico =(nivel*3)+arco+guantes+flecha;
-        updateBuilder.updateColumnValue(Personaje.NIVEL_CASCO, critico);
+        updateBuilder.updateColumnValue(Personaje.CRITICO, critico);
         updateBuilder.update();
 
     }

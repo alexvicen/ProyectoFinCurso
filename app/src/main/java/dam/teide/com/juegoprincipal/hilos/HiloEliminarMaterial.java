@@ -11,12 +11,11 @@ import dam.teide.com.juegoprincipal.nucleo.ProcesarMateriales;
 public class HiloEliminarMaterial extends AsyncTask<Void,Void,Void>{
 
     private ProcesarMateriales activity;
-    private ArrayList<ImageView> arrayList;
-    private View iv;
+    private View v,iv;
 
-    public HiloEliminarMaterial(ProcesarMateriales activity, ArrayList<ImageView> arrayList, View iv) {
+    public HiloEliminarMaterial(ProcesarMateriales activity,View v, View iv) {
         this.activity = activity;
-        this.arrayList = arrayList;
+        this.v = v;
         this.iv = iv;
     }
 
@@ -34,6 +33,7 @@ public class HiloEliminarMaterial extends AsyncTask<Void,Void,Void>{
     @Override
     protected void onProgressUpdate(Void... values) {
         super.onProgressUpdate(values);
+        activity.getLlJuego().removeView(v);
         activity.getLlJuego().removeView(iv);
     }
 

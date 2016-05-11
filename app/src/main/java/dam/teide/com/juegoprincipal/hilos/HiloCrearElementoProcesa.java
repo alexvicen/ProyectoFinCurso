@@ -20,7 +20,7 @@ public class HiloCrearElementoProcesa extends AsyncTask<Void,Void,Void>{
 
     private ProcesarMateriales activity;
     private RelativeLayout llJuego;
-    private int ancho,alto;
+    private int ancho;
     private Random random = new Random();
     private ArrayList<ImageView> arrayList;
     private int tiempo=0,minutos,segundos;
@@ -37,8 +37,8 @@ public class HiloCrearElementoProcesa extends AsyncTask<Void,Void,Void>{
             while(activity.isBucle()&&minutos<1&&mat){
                 try {
                     publishProgress();
-                    Thread.sleep(333);
-                    tiempo+=333;
+                    Thread.sleep(400);
+                    tiempo+=400;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -53,7 +53,6 @@ public class HiloCrearElementoProcesa extends AsyncTask<Void,Void,Void>{
     protected void onPreExecute() {
         llJuego = activity.getLlJuego();
         ancho=llJuego.getWidth();
-        alto=llJuego.getHeight();
         super.onPreExecute();
     }
 

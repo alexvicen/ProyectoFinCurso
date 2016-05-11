@@ -28,6 +28,7 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
     private TextView txtRoca,txtTronco,txtHierro,txtOro,txtGemaBruto,txtPiedra,txtTablasMadera,txtLingoteHierro,txtLingoteOro,txtGema;
     private int roca,tronco,hierro,oro,gemaBruto,piedra,tablasMadera,lingoteHierro,lingoteOro,gema;
     private TextView txtTiempo;
+    private ImageView ivFuego,ivCintaTransportadora;
     private Button btnJugar,btnPausa,btnSalir;
     private Personaje personaje;
     private RelativeLayout llJuego;
@@ -40,7 +41,9 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
 
     private AnimationDrawable animacion1 = new AnimationDrawable();
     private AnimationDrawable animacion2 = new AnimationDrawable();
-    private int movimiento1,movimiento2,contador=1;
+    private AnimationDrawable animacion3 = new AnimationDrawable();
+    private AnimationDrawable animacion4 = new AnimationDrawable();
+    private int movimiento1,movimiento2,movimiento3,movimiento4,contador=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +64,16 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
         btnSalir = (Button)findViewById(R.id.btnSalir);
         llJuego = (RelativeLayout)findViewById(R.id.llJuego);
         txtTiempo=(TextView)findViewById(R.id.txtTiempo);
+        ivFuego = (ImageView)findViewById(R.id.ivFuego);
+        ivCintaTransportadora=(ImageView)findViewById(R.id.ivCintaTransportadora);
         btnJugar.setOnClickListener(this);
         btnPausa.setOnClickListener(this);
         btnSalir.setOnClickListener(this);
         btnPausa.setVisibility(View.GONE);
+        movimiento2 = R.drawable.fuego;
+        ivFuego.setBackgroundResource(movimiento2);
+        animacion2 = (AnimationDrawable) ivFuego.getBackground();
+        animacion2.start();
         try {
             personaje = PersonajeDao.buscarPersonaje(this);
             roca=personaje.getRoca();
@@ -132,14 +141,16 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
             play = false;
             bucle = false;
         }else{
-            hem = new HiloEliminarMaterial(this,arrayList,v);
+            ImageView iv = new ImageView(this);
+            iv.setX(v.getX()-65);
+            iv.setY(v.getY()-60);
+            iv.setMaxHeight(70);
+            iv.setMaxWidth(70);
+            llJuego.addView(iv);
+            hem = new HiloEliminarMaterial(this,v,iv);
             TaskHelper.execute(hem);
             arrayList.remove(v);
             v.setClickable(false);
-            ImageView iv = new ImageView(this);
-            iv.setX(v.getX()-35);
-            iv.setY(v.getY());
-            llJuego.addView(iv);
             switch (v.getTag().toString()){
                 case "roca":
                     setRoca(-1);
@@ -201,13 +212,13 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
                     break;
                 case "hierro":
                     setHierro(-1);
-                    int r = random.nextInt(3)+1;
-                    if (r==1){
+                    int ra = random.nextInt(3)+1;
+                    if (ra==1){
                         movimiento2 = R.drawable.golpe_martillo;
                         iv.setBackgroundResource(movimiento2);
                         animacion2 = (AnimationDrawable) iv.getBackground();
                         animacion2.start();
-                    }else if (r==2){
+                    }else if (ra==2){
                         movimiento2 = R.drawable.golpe_hacha;
                         iv.setBackgroundResource(movimiento2);
                         animacion2 = (AnimationDrawable) iv.getBackground();
@@ -225,6 +236,23 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
                     break;
                 case "pepita":
                     setOro(-1);
+                    int r = random.nextInt(3)+1;
+                    if (r==1){
+                        movimiento2 = R.drawable.golpe_martillo;
+                        iv.setBackgroundResource(movimiento2);
+                        animacion2 = (AnimationDrawable) iv.getBackground();
+                        animacion2.start();
+                    }else if (r==2){
+                        movimiento2 = R.drawable.golpe_hacha;
+                        iv.setBackgroundResource(movimiento2);
+                        animacion2 = (AnimationDrawable) iv.getBackground();
+                        animacion2.start();
+                    }else{
+                        movimiento2 = R.drawable.golpe_pico;
+                        iv.setBackgroundResource(movimiento2);
+                        animacion2 = (AnimationDrawable) iv.getBackground();
+                        animacion2.start();
+                    }
                     movimiento1 = R.drawable.pepita_rota;
                     v.setBackgroundResource(movimiento1);
                     animacion1 = (AnimationDrawable) v.getBackground();

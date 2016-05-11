@@ -43,6 +43,14 @@ public class Esqueleto {
         return resulcrit;
     }
 
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
     public int getVida() {
         return vida;
     }
