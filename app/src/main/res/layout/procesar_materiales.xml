@@ -105,13 +105,41 @@
             android:textSize="15dp" />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="02:00 - 00:00"
-        android:id="@+id/txtTiempo"
-        android:textSize="12dp" />
+        android:gravity="center"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="02:00 - 00:00"
+            android:id="@+id/txtTiempo"
+            android:textSize="12dp"
+            android:layout_marginRight="10dp" />
+
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:text="Pausa"
+            android:id="@+id/btnPausa"
+            android:textSize="12dp"
+            android:background="@drawable/boton"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:text="Salir"
+            android:id="@+id/btnSalir"
+            android:background="@drawable/boton"
+            android:layout_marginLeft="10dp"
+            android:visibility="gone" />
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -34,14 +34,18 @@ public class HiloCrearElementoProcesa extends AsyncTask<Void,Void,Void>{
     @Override
     protected Void doInBackground(Void... params) {
         while (activity.isPlaying()&&minutos<1&&mat) {
-            try {
-                publishProgress();
-                Thread.sleep(333);
-                tiempo+=333;
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            while(activity.isBucle()&&minutos<1&&mat){
+                try {
+                    publishProgress();
+                    Thread.sleep(333);
+                    tiempo+=333;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+
         }
+
         return null;
     }
 

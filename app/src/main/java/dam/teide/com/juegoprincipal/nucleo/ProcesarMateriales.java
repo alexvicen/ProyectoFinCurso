@@ -28,10 +28,10 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
     private TextView txtRoca,txtTronco,txtHierro,txtOro,txtGemaBruto,txtPiedra,txtTablasMadera,txtLingoteHierro,txtLingoteOro,txtGema;
     private int roca,tronco,hierro,oro,gemaBruto,piedra,tablasMadera,lingoteHierro,lingoteOro,gema;
     private TextView txtTiempo;
-    private Button btnJugar;
+    private Button btnJugar,btnPausa,btnSalir;
     private Personaje personaje;
     private RelativeLayout llJuego;
-    private Boolean play = true;
+    private Boolean play = true,bucle=true;
     private ArrayList<ImageView> arrayList = new ArrayList<>();
     private HiloCrearElementoProcesa hcep;
     private HiloBajaProcesa hbp;
@@ -39,7 +39,8 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
     private Random random = new Random();
 
     private AnimationDrawable animacion1 = new AnimationDrawable();
-    private int movimiento1;
+    private AnimationDrawable animacion2 = new AnimationDrawable();
+    private int movimiento1,movimiento2,contador=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +57,14 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
         txtLingoteOro = (TextView)findViewById(R.id.txtLingoteOro);
         txtGema = (TextView)findViewById(R.id.txtGema);
         btnJugar = (Button)findViewById(R.id.btnJugar);
+        btnPausa = (Button)findViewById(R.id.btnPausa);
+        btnSalir = (Button)findViewById(R.id.btnSalir);
         llJuego = (RelativeLayout)findViewById(R.id.llJuego);
         txtTiempo=(TextView)findViewById(R.id.txtTiempo);
         btnJugar.setOnClickListener(this);
+        btnPausa.setOnClickListener(this);
+        btnSalir.setOnClickListener(this);
+        btnPausa.setVisibility(View.GONE);
         try {
             personaje = PersonajeDao.buscarPersonaje(this);
             roca=personaje.getRoca();
@@ -87,23 +93,60 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
         }
     }
 
+
     @Override
     public void onClick(View v) {
-        if (v.getId()==R.id.btnJugar){
-            hcep = new HiloCrearElementoProcesa(this,arrayList);
-            TaskHelper.execute(hcep);
-            hbp = new HiloBajaProcesa(this,arrayList);
-            TaskHelper.execute(hbp);
-            btnJugar.setVisibility(View.INVISIBLE);
-            btnJugar.setEnabled(false);
+        if (v.getId()==R.id.btnJugar) {
+            if (contador == 1) {
+                contador++;
+                hcep = new HiloCrearElementoProcesa(this, arrayList);
+                TaskHelper.execute(hcep);
+                hbp = new HiloBajaProcesa(this, arrayList);
+                TaskHelper.execute(hbp);
+                btnJugar.setVisibility(View.INVISIBLE);
+                btnJugar.setEnabled(false);
+                btnPausa.setVisibility(View.VISIBLE);
+            } else {
+                btnJugar.setVisibility(View.INVISIBLE);
+                btnJugar.setEnabled(false);
+                btnPausa.setVisibility(View.VISIBLE);
+                btnSalir.setVisibility(View.GONE);
+                for (int i = 0; i <arrayList.size() ; i++) {
+                    arrayList.get(i).setClickable(true);
+                    arrayList.get(i).setAlpha(1f);
+                }
+                bucle = true;
+            }
+        }else if (v.getId()==R.id.btnPausa) {
+            bucle = false;
+            btnJugar.setText("Continuar");
+            btnJugar.setVisibility(View.VISIBLE);
+            btnJugar.setEnabled(true);
+            btnPausa.setVisibility(View.GONE);
+            btnSalir.setVisibility(View.VISIBLE);
+            for (int i = 0; i <arrayList.size() ; i++) {
+                arrayList.get(i).setClickable(false);
+                arrayList.get(i).setAlpha(0.5f);
+            }
+        }else if (v.getId()==R.id.btnSalir){
+            play = false;
+            bucle = false;
         }else{
             hem = new HiloEliminarMaterial(this,arrayList,v);
             TaskHelper.execute(hem);
             arrayList.remove(v);
             v.setClickable(false);
+            ImageView iv = new ImageView(this);
+            iv.setX(v.getX()-35);
+            iv.setY(v.getY());
+            llJuego.addView(iv);
             switch (v.getTag().toString()){
                 case "roca":
                     setRoca(-1);
+                    movimiento2 = R.drawable.golpe_pico;
+                    iv.setBackgroundResource(movimiento2);
+                    animacion2 = (AnimationDrawable) iv.getBackground();
+                    animacion2.start();
                     if (random.nextInt(5)==2){
                         movimiento1 = R.drawable.roca_rota;
                         v.setBackgroundResource(movimiento1);
@@ -119,6 +162,10 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
                     break;
                 case "tronco":
                     setTronco(-1);
+                    movimiento2 = R.drawable.golpe_hacha;
+                    iv.setBackgroundResource(movimiento2);
+                    animacion2 = (AnimationDrawable) iv.getBackground();
+                    animacion2.start();
                     if (random.nextInt(5)==2){
                         movimiento1 = R.drawable.troncos_rotos;
                         v.setBackgroundResource(movimiento1);
@@ -135,6 +182,10 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
                     break;
                 case "gema_bruto":
                     setGemaBruto(-1);
+                    movimiento2 = R.drawable.golpe_martillo;
+                    iv.setBackgroundResource(movimiento2);
+                    animacion2 = (AnimationDrawable) iv.getBackground();
+                    animacion2.start();
                     if (random.nextInt(5)==2){
                         movimiento1 = R.drawable.gema_bruto_rota;
                         v.setBackgroundResource(movimiento1);
@@ -150,6 +201,23 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
                     break;
                 case "hierro":
                     setHierro(-1);
+                    int r = random.nextInt(3)+1;
+                    if (r==1){
+                        movimiento2 = R.drawable.golpe_martillo;
+                        iv.setBackgroundResource(movimiento2);
+                        animacion2 = (AnimationDrawable) iv.getBackground();
+                        animacion2.start();
+                    }else if (r==2){
+                        movimiento2 = R.drawable.golpe_hacha;
+                        iv.setBackgroundResource(movimiento2);
+                        animacion2 = (AnimationDrawable) iv.getBackground();
+                        animacion2.start();
+                    }else{
+                        movimiento2 = R.drawable.golpe_pico;
+                        iv.setBackgroundResource(movimiento2);
+                        animacion2 = (AnimationDrawable) iv.getBackground();
+                        animacion2.start();
+                    }
                     movimiento1 = R.drawable.hierro_roto;
                     v.setBackgroundResource(movimiento1);
                     animacion1 = (AnimationDrawable) v.getBackground();
@@ -364,5 +432,13 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
     public void setGema(int gema) {
         this.gema += gema;
         txtGema.setText(String.valueOf(this.gema));
+    }
+
+    public Boolean isBucle() {
+        return bucle;
+    }
+
+    public void setBucle(Boolean bucle) {
+        this.bucle = bucle;
     }
 }

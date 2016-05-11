@@ -37,9 +37,10 @@
             android:name=".nucleo.Herreria"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar.FullScreen" />
-        <activity android:name=".nucleo.ProcesarMateriales"
+        <activity
+            android:name=".nucleo.ProcesarMateriales"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar.FullScreen"></activity>
+            android:theme="@style/AppTheme.NoActionBar.FullScreen" />
     </application>
 
 </manifest>

@@ -23,13 +23,16 @@ public class HiloBajaProcesa extends AsyncTask<Void,Void,Void> {
     @Override
     protected Void doInBackground(Void... params) {
         while (activity.isPlaying()){
-            try {
-                Thread.sleep(10);
-                publishProgress();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            while(activity.isBucle()){
+                try {
+                    Thread.sleep(10);
+                    publishProgress();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
+
         return null;
     }
 
@@ -41,7 +44,7 @@ public class HiloBajaProcesa extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onProgressUpdate(Void... values) {
         for (int i = 0; i <arrayList.size() ; i++) {
-            arrayList.get(i).setY(arrayList.get(i).getY()+4);
+            arrayList.get(i).setY(arrayList.get(i).getY()+2);
             if (arrayList.get(i).getY()>=activity.getLlJuego().getHeight()-20){
 
                 switch (arrayList.get(i).getTag().toString()){
@@ -64,6 +67,7 @@ public class HiloBajaProcesa extends AsyncTask<Void,Void,Void> {
                 arrayList.remove(i);
                 if (arrayList.size()==0){
                     activity.setPlay(false);
+                    activity.setBucle(false);
                 }
             }
         }
