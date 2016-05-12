@@ -6,6 +6,10 @@
           <option name="url" value="https://github.com/aes-multimedia/crm-aes.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/aes-multimedia/crm-aesm.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Users\Sala5\Desktop\Android Studio" />
