@@ -6,4 +6,8 @@
     <string name="olvidado_contraseña">¿HAS OLVIDADO TU CONTRASEÑA?</string>
     <string name="entrar">ENTRAR</string>
     <string name="registrarse">¡REGISTRATE AHORA!</string>
+    <string name="mejorar">MEJORAR</string>
+    <string name="necesitas">NECESITAS</string>
+    <string name="tienes">TIENES</string>
+    <string name="salir">SALIR</string>
 </resources>

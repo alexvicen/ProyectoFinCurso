@@ -16,6 +16,7 @@ import dam.teide.com.juegoprincipal.entidades.Personaje;
 public class Herreria extends AppCompatActivity implements View.OnClickListener{
     private TextView txtPiedra,txtTablasMadera,txtLingoteHierro,txtLingoteOro,txtGema,txtNivCasco,txtNivArco,txtNivEscudo,txtNivGuantes,txtNivBotas,txtNivFlechas;
     private Button btnCasco,btnArco,btnEscudo,btnGuantes,btnBotas,btnFlechas,btnIndex;
+    private Boolean activo = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +39,6 @@ public class Herreria extends AppCompatActivity implements View.OnClickListener{
         btnBotas = (Button)findViewById(R.id.btnBotas);
         btnFlechas = (Button)findViewById(R.id.btnFlechas);
         btnIndex = (Button)findViewById(R.id.btnIndex);
-
         btnCasco.setOnClickListener(this);
         btnArco.setOnClickListener(this);
         btnEscudo.setOnClickListener(this);
@@ -67,30 +67,52 @@ public class Herreria extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
+        Intent i = null;
+        i = new Intent(this,MejorarArmas.class);
         switch (v.getId()){
             case R.id.btnCasco:
-
+                i.putExtra("equipo","casco");
+                startActivity(i);
                 break;
             case R.id.btnArco:
-
+                i.putExtra("equipo","arco");
+                startActivity(i);
                 break;
             case R.id.btnEscudo:
-
+                i.putExtra("equipo","escudo");
+                startActivity(i);
                 break;
             case R.id.btnGuantes:
-
+                i.putExtra("equipo","guantes");
+                startActivity(i);
                 break;
             case R.id.btnBotas:
-
+                i.putExtra("equipo","botas");
+                startActivity(i);
                 break;
             case R.id.btnFlechas:
-
+                i.putExtra("equipo","flechas");
+                startActivity(i);
                 break;
             case R.id.btnIndex:
-                Intent i = new Intent(this,Index.class);
+                i = new Intent(this,Index.class);
                 startActivity(i);
                 finish();
                 break;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (activo){
+            recreate();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        activo=true;
     }
 }

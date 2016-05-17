@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,7 +25,7 @@ import dam.teide.com.juegoprincipal.entidades.Personaje;
 import dam.teide.com.juegoprincipal.hilos.HiloConexion;
 import dam.teide.com.juegoprincipal.nucleo.Index;
 
-public class Login extends AppCompatActivity implements View.OnClickListener{
+public class Login extends AppCompatActivity implements View.OnClickListener,TextWatcher{
 
     private Button btnEntrar;
     private TextView tvContOlvi,tvRegistro;
@@ -38,6 +40,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         tvRegistro = (TextView)findViewById(R.id.tvRegistro);
         etLogin = (EditText)findViewById(R.id.etLogin);
         etPass = (EditText)findViewById(R.id.etPass);
+        etLogin.addTextChangedListener(this);
+        etPass.addTextChangedListener(this);
         btnEntrar.setOnClickListener(this);
         tvContOlvi.setOnClickListener(this);
         tvRegistro.setOnClickListener(this);
@@ -74,6 +78,27 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 break;
         }
 
+
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        if (!etLogin.getText().toString().trim().isEmpty()&&!etPass.getText().toString().isEmpty()){
+            btnEntrar.setClickable(true);
+            btnEntrar.setAlpha(1f);
+        }else{
+            btnEntrar.setClickable(false);
+            btnEntrar.setAlpha(0.5f);
+        }
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
 
     }
 
