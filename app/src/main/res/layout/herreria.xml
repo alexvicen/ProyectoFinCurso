@@ -27,7 +27,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/layaut_juego">
+                android:background="@drawable/layaut_juego"
+                android:gravity="center">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -43,7 +44,8 @@
                     android:text="0"
                     android:id="@+id/txtPiedra"
                     android:typeface="serif"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textSize="20dp" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -59,7 +61,9 @@
                     android:text="0"
                     android:id="@+id/txtTablasMadera"
                     android:typeface="serif"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:textIsSelectable="false" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -75,7 +79,8 @@
                     android:text="0"
                     android:id="@+id/txtLingoteHierro"
                     android:typeface="serif"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textSize="20dp" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -91,7 +96,8 @@
                     android:text="0"
                     android:id="@+id/txtLingoteOro"
                     android:typeface="serif"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textSize="20dp" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -107,7 +113,8 @@
                     android:text="0"
                     android:id="@+id/txtGema"
                     android:typeface="serif"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textSize="20dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -115,18 +122,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:gravity="center">
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Casco"
                     android:id="@+id/btnCasco"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="1"
                     android:layout_marginLeft="10dp"
-                    android:background="@drawable/boton"
-                    android:typeface="serif" />
+                    android:background="@drawable/casco_pequeno"
+                    android:typeface="serif"
+                    android:layout_weight="1" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -135,19 +142,18 @@
                     android:text="0"
                     android:id="@+id/txtNivCasco"
                     android:layout_marginRight="50dp"
-                    android:layout_weight="1"
                     android:background="@drawable/layaut_movimientos"
-                    android:typeface="serif" />
+                    android:typeface="serif"
+                    android:layout_weight="1" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Arco"
                     android:id="@+id/btnArco"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/boton"
-                    android:typeface="serif" />
+                    android:background="@drawable/arco_pequeno"
+                    android:typeface="serif"
+                    android:layout_weight="1" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -155,10 +161,10 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="0"
                     android:id="@+id/txtNivArco"
-                    android:layout_weight="1"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/layaut_movimientos"
-                    android:typeface="serif" />
+                    android:typeface="serif"
+                    android:layout_weight="1" />
 
             </LinearLayout>
 
@@ -167,18 +173,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:gravity="center">
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Escudo"
                     android:id="@+id/btnEscudo"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="1"
                     android:layout_marginLeft="10dp"
-                    android:background="@drawable/boton"
-                    android:typeface="serif" />
+                    android:background="@drawable/escudo_pequeno"
+                    android:typeface="serif"
+                    android:layout_weight="1" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -187,19 +193,18 @@
                     android:text="0"
                     android:id="@+id/txtNivEscudo"
                     android:layout_marginRight="50dp"
-                    android:layout_weight="1"
                     android:background="@drawable/layaut_movimientos"
-                    android:typeface="serif" />
+                    android:typeface="serif"
+                    android:layout_weight="1" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Guantes"
                     android:id="@+id/btnGuantes"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/boton"
-                    android:typeface="serif" />
+                    android:background="@drawable/guantes_pequenos"
+                    android:typeface="serif"
+                    android:layout_weight="1" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -207,10 +212,10 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="0"
                     android:id="@+id/txtNivGuantes"
-                    android:layout_weight="1"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/layaut_movimientos"
-                    android:typeface="serif" />
+                    android:typeface="serif"
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -218,18 +223,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:gravity="center">
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Botas"
                     android:id="@+id/btnBotas"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="1"
                     android:layout_marginLeft="10dp"
-                    android:background="@drawable/boton"
-                    android:typeface="serif" />
+                    android:background="@drawable/botas_pequenas"
+                    android:typeface="serif"
+                    android:layout_weight="1" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -238,19 +243,18 @@
                     android:text="0"
                     android:id="@+id/txtNivBotas"
                     android:layout_marginRight="50dp"
-                    android:layout_weight="1"
                     android:background="@drawable/layaut_movimientos"
-                    android:typeface="serif" />
+                    android:typeface="serif"
+                    android:layout_weight="1" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Flechas"
                     android:id="@+id/btnFlechas"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/boton"
-                    android:typeface="serif" />
+                    android:background="@drawable/flecha_pequena"
+                    android:typeface="serif"
+                    android:layout_weight="1" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -258,10 +262,10 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="0"
                     android:id="@+id/txtNivFlechas"
-                    android:layout_weight="1"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/layaut_movimientos"
-                    android:typeface="serif" />
+                    android:typeface="serif"
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <Button
@@ -270,7 +274,8 @@
                 android:text="index"
                 android:id="@+id/btnIndex"
                 android:background="@drawable/boton"
-                android:typeface="serif" />
+                android:typeface="serif"
+                android:layout_marginTop="20dp" />
         </LinearLayout>
     </ScrollView>
 
