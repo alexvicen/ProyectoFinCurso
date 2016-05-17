@@ -145,7 +145,6 @@
             android:layout_height="wrap_content"
             android:text="A.Simple"
             android:id="@+id/btnSimple"
-            android:alpha="0.5"
             android:layout_alignTop="@+id/btnEspecial"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -161,7 +160,6 @@
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@+id/btnSimple"
             android:layout_toEndOf="@+id/btnSimple"
-            android:alpha="0.5"
             android:layout_marginLeft="5dp"
             android:typeface="serif"
             android:background="@drawable/boton" />

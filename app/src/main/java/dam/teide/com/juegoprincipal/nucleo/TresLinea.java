@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class TresLinea extends AppCompatActivity implements View.OnClickListener
     private TextView txtPuntos,txtRoca,txtTronco,txtHierro,txtPepita,txtGemaBruto;
     private boolean play=false;
     private HiloJuego hj;
+    private Button btnSalir;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,8 @@ public class TresLinea extends AppCompatActivity implements View.OnClickListener
         txtHierro=(TextView)findViewById(R.id.txtHierro);
         txtPepita=(TextView)findViewById(R.id.txtPepita);
         txtGemaBruto=(TextView)findViewById(R.id.txtGemaBruto);
+        btnSalir = (Button)findViewById(R.id.btnSalir);
+        btnSalir.setOnClickListener(this);
         CrearArrayTablero();
         CrearImagenesTablero();
         CrearTablero();
@@ -106,21 +110,25 @@ public class TresLinea extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        contador++;
-        if(contador==1){
-            casilla1 = (ImageView) v;
-            activarProximos();
-        }else if(contador==2){
-            casilla2 = (ImageView) v;
-            if (casilla1 == casilla2){
-                contador = 0;
-                activarTodos();
-            }else {
-                cambiarPosicion(casilla1, casilla2);
-                while(hj.comprobarHorizontal());
-                contador = 0;
-                movimientos();
-                activarTodos();
+        if (v.getId()==R.id.btnSalir){
+            puntos=0;
+        }else {
+            contador++;
+            if (contador == 1) {
+                casilla1 = (ImageView) v;
+                activarProximos();
+            } else if (contador == 2) {
+                casilla2 = (ImageView) v;
+                if (casilla1 == casilla2) {
+                    contador = 0;
+                    activarTodos();
+                } else {
+                    cambiarPosicion(casilla1, casilla2);
+                    while (hj.comprobarHorizontal()) ;
+                    contador = 0;
+                    movimientos();
+                    activarTodos();
+                }
             }
         }
     }

@@ -31,7 +31,7 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
     private AnimationDrawable animacion4 = new AnimationDrawable();
     private int movimiento1, movimiento2, movimiento3,movimiento4;
     private ImageView ivPer,iv1, iv2, iv3;
-    private int ancho, alto;
+    private int ancho, alto, contadorEspecial=0;
     private TextView txt1, txt2,txt3,txtVida,txtNivelPersonaje,txtNivelEsqueleto1,txtNivelEsqueleto2,txtNivelEsqueleto3;
     private Button btnJugar,btnSimple,btnEspecial;
     private ProgressBar pbVida,pb1,pb2,pb3;
@@ -52,9 +52,9 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.juego_principal);
         try {
             personaje = PersonajeDao.buscarPersonaje(this);
-            esqueleto1 = new Esqueleto(r.nextInt(personaje.getNivel()+4)-2);
-            esqueleto2 = new Esqueleto(r.nextInt(personaje.getNivel()+4)-2);
-            esqueleto3 = new Esqueleto(r.nextInt(personaje.getNivel()+4)-2);
+            esqueleto1 = new Esqueleto((r.nextInt(personaje.getNivel())+4)-2);
+            esqueleto2 = new Esqueleto((r.nextInt(personaje.getNivel())+4)-2);
+            esqueleto3 = new Esqueleto((r.nextInt(personaje.getNivel())+4)-2);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -159,11 +159,19 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
         }else if (v.getId()==R.id.btnSimple){
             HiloAtaquePersonaje hap= new HiloAtaquePersonaje(this, iv1, iv2, iv3, ivPer);
             t.execute(hap);
+            contadorEspecial++;
             ataqueEsp=false;
+            if (contadorEspecial==7){
+                btnEspecial.setClickable(true);
+                btnEspecial.setAlpha(1f);
+            }
         }else if (v.getId()==R.id.btnEspecial){
             HiloAtaquePersonaje hap= new HiloAtaquePersonaje(this, iv1, iv2, iv3, ivPer);
             t.execute(hap);
             ataqueEsp=true;
+            contadorEspecial=0;
+            btnEspecial.setClickable(false);
+            btnEspecial.setAlpha(0.5f);
         }
     }
 
@@ -318,49 +326,6 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
             encendido=false;
         }
     }
-    public void bajarVidaEnemigo(Esqueleto esqueleto){
-        if (esqueleto==esqueleto1){
-            int daño = (personaje.getAtaque() - (esqueleto1.getDefensa()));
-            if (daño<0){
-                daño=0;
-            }
-            esqueleto1.setVida(esqueleto1.getVida()-daño);
-            if (esqueleto1.getVida()<=0){
-                esqueleto1.setVida(0);
-                enem1=true;
-            }
-            pb1.setProgress(esqueleto1.getVida());
-            txt1.setText(esqueleto1.getVida()+"");
-        }else if (esqueleto==esqueleto2){
-            int daño= (personaje.getAtaque()-(esqueleto2.getDefensa()));
-            if (daño<0){
-                daño=0;
-            }
-            esqueleto2.setVida(esqueleto2.getVida() - daño);
-            if (esqueleto2.getVida()<=0){
-                esqueleto2.setVida(0);
-                enem2=true;
-            }
-            pb2.setProgress(esqueleto2.getVida());
-            txt2.setText(esqueleto2.getVida()+"");
-        }else if (esqueleto==esqueleto3){
-            int daño =  (personaje.getAtaque()-(esqueleto3.getDefensa()));
-            if (daño<0){
-                daño=0;
-            }
-            esqueleto3.setVida(esqueleto3.getVida() - daño);
-            if (esqueleto3.getVida()<=0){
-                esqueleto3.setVida(0);
-                enem3=true;
-            }
-            pb3.setProgress(esqueleto3.getVida());
-            txt3.setText(esqueleto3.getVida()+"");
-        }
-        if ((esqueleto1.getVida()<1)&&(esqueleto2.getVida()<1)&&(esqueleto3.getVida()<1)){
-            encendido=false;
-        }
-
-    }
     public void bajarVidaEnemigoCritico(Esqueleto esqueleto){
         if (esqueleto==esqueleto1){
             int daño =  (personaje.getAtaque()+personaje.getCritico()-esqueleto1.getDefensa());
@@ -406,6 +371,49 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
             encendido=false;
         }
     }
+    public void bajarVidaEnemigo(Esqueleto esqueleto){
+        if (esqueleto==esqueleto1){
+            int daño = (personaje.getAtaque() - (esqueleto1.getDefensa()));
+            if (daño<0){
+                daño=0;
+            }
+            esqueleto1.setVida(esqueleto1.getVida()-daño);
+            if (esqueleto1.getVida()<=0){
+                esqueleto1.setVida(0);
+                enem1=true;
+            }
+            pb1.setProgress(esqueleto1.getVida());
+            txt1.setText(esqueleto1.getVida()+"");
+        }else if (esqueleto==esqueleto2){
+            int daño= (personaje.getAtaque()-(esqueleto2.getDefensa()));
+            if (daño<0){
+                daño=0;
+            }
+            esqueleto2.setVida(esqueleto2.getVida() - daño);
+            if (esqueleto2.getVida()<=0){
+                esqueleto2.setVida(0);
+                enem2=true;
+            }
+            pb2.setProgress(esqueleto2.getVida());
+            txt2.setText(esqueleto2.getVida()+"");
+        }else if (esqueleto==esqueleto3){
+            int daño =  (personaje.getAtaque()-(esqueleto3.getDefensa()));
+            if (daño<0){
+                daño=0;
+            }
+            esqueleto3.setVida(esqueleto3.getVida() - daño);
+            if (esqueleto3.getVida()<=0){
+                esqueleto3.setVida(0);
+                enem3=true;
+            }
+            pb3.setProgress(esqueleto3.getVida());
+            txt3.setText(esqueleto3.getVida()+"");
+        }
+        if ((esqueleto1.getVida()<1)&&(esqueleto2.getVida()<1)&&(esqueleto3.getVida()<1)){
+            encendido=false;
+        }
+
+    }
     public void bajarVidaEnemigoEspecial(Esqueleto esqueleto){
 
         if (esqueleto==esqueleto1){
@@ -414,7 +422,7 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
                 daño=0;
             }
             esqueleto1.setVida(esqueleto1.getVida()-daño);
-            if (esqueleto1.getVida()<0){
+            if (esqueleto1.getVida()<=0){
                 esqueleto1.setVida(0);
                 enem1=true;
             }
@@ -426,7 +434,7 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
                 daño=0;
             }
             esqueleto2.setVida(esqueleto2.getVida() - daño);
-            if (esqueleto2.getVida()<0){
+            if (esqueleto2.getVida()<=0){
                 esqueleto2.setVida(0);
                 enem2=true;
             }
@@ -438,7 +446,7 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
                 daño=0;
             }
             esqueleto3.setVida(esqueleto3.getVida() - daño);
-            if (esqueleto3.getVida()<0){
+            if (esqueleto3.getVida()<=0){
                 esqueleto3.setVida(0);
                 enem3=true;
             }
@@ -448,7 +456,5 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
         if ((esqueleto1.getVida()<1)&&(esqueleto2.getVida()<1)&&(esqueleto3.getVida()<1)){
             encendido=false;
         }
-
-
     }
 }

@@ -97,14 +97,13 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
     public void recogerJsonActualizarPersonaje(String Json) throws JSONException {
         JSONObject jsonObject = new JSONObject(Json);
         int estado = jsonObject.getInt("estado");
-        Toast.makeText(Index.this, estado+"", Toast.LENGTH_SHORT).show();
         if (estado == 201) {
             try {
                 BBDDConstantes.borrarDatosTablas(this);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            finish();
+            this.finish();
         }else{
             Toast.makeText(Index.this, "No se ha podido actualizar", Toast.LENGTH_SHORT).show();
         }

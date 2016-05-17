@@ -76,7 +76,6 @@ public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        Toast.makeText(activity, "entra hilo ataque personaje", Toast.LENGTH_SHORT).show();
         activity.getBtnEspecial().setVisibility(View.INVISIBLE);
         activity.getBtnSimple().setVisibility(View.INVISIBLE);
     }
@@ -298,7 +297,6 @@ public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        Toast.makeText(activity, "sale hilo ataque personaje", Toast.LENGTH_SHORT).show();
         activity.getBtnEspecial().setVisibility(View.VISIBLE);
         activity.getBtnSimple().setVisibility(View.VISIBLE);
         if(activity.getEsqueleto1().getVida()>0) {

@@ -16,24 +16,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_gravity="center"
-        android:background="@drawable/layaut_movimientos">
+        android:layout_gravity="center">
 
-        <TextView
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Movimientos: "
-            android:id="@+id/textView"
-            android:typeface="serif" />
+            android:background="@drawable/layaut_movimientos">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="10"
-            android:id="@+id/txtPuntos"
-            android:typeface="serif" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Movimientos: "
+                android:id="@+id/textView"
+                android:typeface="serif" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="10"
+                android:id="@+id/txtPuntos"
+                android:typeface="serif" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="30dp"
+            android:text="@string/salir"
+            android:id="@+id/btnSalir"
+            android:textSize="12dp"
+            android:background="@drawable/boton"
+            android:layout_marginLeft="5dp" />
 
     </LinearLayout>
 

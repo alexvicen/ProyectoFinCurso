@@ -60,8 +60,6 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        Toast.makeText(activity, "entra hilo ataque esqueleto", Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
@@ -163,7 +161,7 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
                     flecha1.setVisibility(View.VISIBLE);
                     if (flecha1.getX()>ivPer.getX()){
                         x1-=aumX1;
-                        y1-=1;
+                        y1-=2;
                         flecha1.setX(x1);
                         flecha1.setY(y1);
                     }else{
@@ -185,7 +183,7 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
                     flecha3.setVisibility(View.VISIBLE);
                     if (flecha3.getX()>ivPer.getX()){
                         x3-=aumX3;
-                        y3+=1;
+                        y3+=2;
                         flecha3.setX(x3);
                         flecha3.setY(y3);
                     }else{
@@ -229,8 +227,8 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        Toast.makeText(activity, "sale hilo ataque esqueleto", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(activity,Index.class);
         activity.startActivity(i);
+        activity.finish();
     }
 }
