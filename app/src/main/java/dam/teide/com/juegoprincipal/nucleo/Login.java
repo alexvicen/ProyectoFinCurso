@@ -54,6 +54,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener,Tex
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        btnEntrar.setClickable(false);
+        btnEntrar.setAlpha(0.5f);
     }
 
     @Override

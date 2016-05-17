@@ -26,7 +26,7 @@ import dam.teide.com.juegoprincipal.hilos.TaskHelper;
 
 public class ProcesarMateriales extends AppCompatActivity implements View.OnClickListener{
     private TextView txtRoca,txtTronco,txtHierro,txtOro,txtGemaBruto,txtPiedra,txtTablasMadera,txtLingoteHierro,txtLingoteOro,txtGema;
-    private int roca,tronco,hierro,oro,gemaBruto,piedra,tablasMadera,lingoteHierro,lingoteOro,gema;
+    private int roca=0,tronco=0,hierro=0,oro=0,gemaBruto=0,piedra=0,tablasMadera=0,lingoteHierro=0,lingoteOro=0,gema=0;
     private TextView txtTiempo;
     private ImageView ivFuego,ivCintaTransportadora;
     private Button btnJugar,btnPausa,btnSalir;
@@ -86,6 +86,7 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
             txtOro.setText(String.valueOf(oro));
             gemaBruto=personaje.getGema_bruto();
             txtGemaBruto.setText(String.valueOf(gemaBruto));
+
             piedra=personaje.getPiedra();
             txtPiedra.setText(String.valueOf(piedra));
             tablasMadera=personaje.getTabla_madera();
@@ -95,7 +96,7 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
             lingoteOro=personaje.getLingote_oro();
             txtLingoteOro.setText(String.valueOf(lingoteOro));
             gema=personaje.getGema();
-            txtGema.setText(String.valueOf(personaje.getGema()));
+            txtGema.setText(String.valueOf(gema));
         } catch (SQLException e) {
             Toast.makeText(ProcesarMateriales.this, "Fallo al coger personaje", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
@@ -168,11 +169,10 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
                         v.setBackgroundResource(movimiento1);
                         animacion1 = (AnimationDrawable) v.getBackground();
                         animacion1.start();
-                        setRoca(1);
+                        setPiedra(1);
                     }
                     break;
                 case "tronco":
-                    setTronco(-1);
                     movimiento2 = R.drawable.golpe_hacha;
                     iv.setBackgroundResource(movimiento2);
                     animacion2 = (AnimationDrawable) iv.getBackground();
@@ -192,7 +192,6 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
                     }
                     break;
                 case "gema_bruto":
-                    setGemaBruto(-1);
                     movimiento2 = R.drawable.golpe_martillo;
                     iv.setBackgroundResource(movimiento2);
                     animacion2 = (AnimationDrawable) iv.getBackground();
@@ -211,7 +210,6 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
                     }
                     break;
                 case "hierro":
-                    setHierro(-1);
                     int ra = random.nextInt(3)+1;
                     if (ra==1){
                         movimiento2 = R.drawable.golpe_martillo;
@@ -235,7 +233,6 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
                     animacion1.start();
                     break;
                 case "pepita":
-                    setOro(-1);
                     int r = random.nextInt(3)+1;
                     if (r==1){
                         movimiento2 = R.drawable.golpe_martillo;
@@ -273,11 +270,11 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
         PersonajeDao.actualizarHierro(this,-(personaje.getHierro()-getHierro()));
         PersonajeDao.actualizarTronco(this,-(personaje.getTronco()-getTronco()));
 
-        PersonajeDao.actualizarGema(this,getGema());
-        PersonajeDao.actualizarPiedra(this,getPiedra());
-        PersonajeDao.actualizarLingoteOro(this,getLingoteOro());
-        PersonajeDao.actualizarLingoteHierro(this,getLingoteHierro());
-        PersonajeDao.actualizarTablaMadera(this,getTablasMadera());
+        PersonajeDao.actualizarGema(this,gema);
+        PersonajeDao.actualizarPiedra(this,piedra);
+        PersonajeDao.actualizarLingoteOro(this,lingoteOro);
+        PersonajeDao.actualizarLingoteHierro(this,lingoteHierro);
+        PersonajeDao.actualizarTablaMadera(this,tablasMadera);
 
         Intent i = new Intent(this, Index.class);
         startActivity(i);

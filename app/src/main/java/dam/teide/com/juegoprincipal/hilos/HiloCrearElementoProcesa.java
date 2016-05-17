@@ -65,25 +65,25 @@ public class HiloCrearElementoProcesa extends AsyncTask<Void,Void,Void>{
             minutos++;
         }
         DecimalFormat formato = new DecimalFormat("00");
-        activity.getTxtTiempo().setText("02:00 - "+formato.format(minutos)+":"+formato.format(segundos));
+        activity.getTxtTiempo().setText("01:00 - "+formato.format(minutos)+":"+formato.format(segundos));
         ImageView iv = new ImageView(activity);
         iv.setX(random.nextInt(ancho-90)+10);
         iv.setY(-40);
 
         int contador = 0;
-        if (activity.getOro()!=0){
+        if (activity.getOro()>0){
             contador++;
         }
-        if (activity.getRoca()!=0){
+        if (activity.getRoca()>0){
             contador++;
         }
-        if (activity.getTronco()!=0){
+        if (activity.getTronco()>0){
             contador++;
         }
-        if (activity.getGemaBruto()!=0){
+        if (activity.getGemaBruto()>0){
             contador++;
         }
-        if (activity.getHierro()!=0){
+        if (activity.getHierro()>0){
             contador++;
         }
         int material = random.nextInt(contador)+1;

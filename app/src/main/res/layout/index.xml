@@ -48,8 +48,8 @@
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="55dp"
+        android:layout_height="30dp"
         android:text="Cerrar"
         android:id="@+id/btnCerrarSesion"
         android:layout_alignParentTop="true"

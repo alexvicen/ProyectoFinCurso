@@ -181,7 +181,7 @@ public class PersonajeDao extends DBHelperMOS{
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,buscarPersonaje(context).getId_personaje());
-        lingote_hierro = lingote_hierro+buscarPersonaje(context).getRoca();
+        lingote_hierro = lingote_hierro+buscarPersonaje(context).getLingote_hierro();
         updateBuilder.updateColumnValue(Personaje.LINGOTE_HIERRO, lingote_hierro);
         updateBuilder.update();
 
@@ -199,7 +199,7 @@ public class PersonajeDao extends DBHelperMOS{
         cargarDao(context);
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,buscarPersonaje(context).getId_personaje());
-        piedra = piedra+buscarPersonaje(context).getRoca();
+        piedra = piedra+buscarPersonaje(context).getPiedra();
         updateBuilder.updateColumnValue(Personaje.PIEDRA, piedra);
         updateBuilder.update();
 

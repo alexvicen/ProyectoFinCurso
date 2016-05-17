@@ -19,7 +19,8 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -45,7 +46,7 @@
                     android:id="@+id/txtPiedra"
                     android:typeface="serif"
                     android:layout_weight="1"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -62,7 +63,7 @@
                     android:id="@+id/txtTablasMadera"
                     android:typeface="serif"
                     android:layout_weight="1"
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     android:textIsSelectable="false" />
 
                 <ImageView
@@ -80,7 +81,7 @@
                     android:id="@+id/txtLingoteHierro"
                     android:typeface="serif"
                     android:layout_weight="1"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -97,7 +98,7 @@
                     android:id="@+id/txtLingoteOro"
                     android:typeface="serif"
                     android:layout_weight="1"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -114,7 +115,7 @@
                     android:id="@+id/txtGema"
                     android:typeface="serif"
                     android:layout_weight="1"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
             </LinearLayout>
 
             <LinearLayout
