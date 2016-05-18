@@ -1,5 +1,6 @@
 package dam.teide.com.juegoprincipal.nucleo;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,9 +24,9 @@ public class TresLinea extends AppCompatActivity implements View.OnClickListener
     private ImageView arrayimg [][] = new ImageView [arraynum.length][arraynum[1].length];
     private Random r = new Random();
     private LinearLayout panelJuego;
-    private int contador=0,puntos=20,punRoca=0,punTronco=0,punHierro=0,punPepita=0,punGemaBruto=0;
+    private int contador=0,puntos=20,punRoca=0,punTronco=0,punHierro=0,punPepita=0,punGemaBruto=0,combo=0;
     private ImageView casilla1,casilla2;
-    private TextView txtPuntos,txtRoca,txtTronco,txtHierro,txtPepita,txtGemaBruto;
+    private TextView txtPuntos,txtRoca,txtTronco,txtHierro,txtPepita,txtGemaBruto,txtCombo;
     private boolean play=false;
     private HiloJuego hj;
     private Button btnSalir;
@@ -40,6 +41,8 @@ public class TresLinea extends AppCompatActivity implements View.OnClickListener
         txtHierro=(TextView)findViewById(R.id.txtHierro);
         txtPepita=(TextView)findViewById(R.id.txtPepita);
         txtGemaBruto=(TextView)findViewById(R.id.txtGemaBruto);
+        txtCombo = (TextView)findViewById(R.id.txtCombo);
+        txtCombo.setVisibility(View.INVISIBLE);
         btnSalir = (Button)findViewById(R.id.btnSalir);
         btnSalir.setOnClickListener(this);
         CrearArrayTablero();
@@ -115,6 +118,8 @@ public class TresLinea extends AppCompatActivity implements View.OnClickListener
         }else {
             contador++;
             if (contador == 1) {
+                setCombo(0);
+                txtCombo.setVisibility(View.INVISIBLE);
                 casilla1 = (ImageView) v;
                 activarProximos();
             } else if (contador == 2) {
@@ -124,10 +129,12 @@ public class TresLinea extends AppCompatActivity implements View.OnClickListener
                     activarTodos();
                 } else {
                     cambiarPosicion(casilla1, casilla2);
+                    txtCombo.setVisibility(View.VISIBLE);
                     while (hj.comprobarHorizontal()) ;
                     contador = 0;
                     movimientos();
                     activarTodos();
+
                 }
             }
         }
@@ -229,5 +236,24 @@ public class TresLinea extends AppCompatActivity implements View.OnClickListener
     }
     public boolean isPlay() {
         return play;
+    }
+
+    public int getCombo() {
+        return combo;
+    }
+
+    public void setCombo(int combo) {
+        this.combo = combo;
+        if (combo<=2) {
+            txtCombo.setTextColor(Color.GREEN);
+            txtCombo.setTextSize(20);
+        }else if (combo<=5){
+            txtCombo.setTextColor(Color.YELLOW);
+            txtCombo.setTextSize(25);
+        }else {
+            txtCombo.setTextColor(Color.RED);
+            txtCombo.setTextSize(30);
+        }
+        txtCombo.setText("Combo x " + combo);
     }
 }

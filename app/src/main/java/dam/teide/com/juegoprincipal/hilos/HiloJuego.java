@@ -70,6 +70,7 @@ public class HiloJuego extends AsyncTask<Void,Void,Void>{
                         contadorHoriz = 0;
                         if (activity.isPlay()){
                             sumarPuntos(arraynum[i][j]);
+                            activity.setCombo(activity.getCombo()+1);
                         }
                         activity.cambiarPosicion(arrayimg[i][j - 1],arrayimg[r.nextInt(arraynum.length)][r.nextInt(arraynum.length)]);
                         activity.cambiarPosicion(arrayimg[i][j],arrayimg[r.nextInt(arraynum.length)][r.nextInt(arraynum.length)]);
@@ -93,6 +94,7 @@ public class HiloJuego extends AsyncTask<Void,Void,Void>{
                         contadorVertical = 0;
                         if (activity.isPlay()){
                             sumarPuntos(arraynum[j][i]);
+                            activity.setCombo(activity.getCombo()+1);
                         }
                         activity.cambiarPosicion(arrayimg[j - 1][i],arrayimg[r.nextInt(arraynum.length)][r.nextInt(arraynum.length)]);
                         activity.cambiarPosicion(arrayimg[j][i],arrayimg[r.nextInt(arraynum.length)][r.nextInt(arraynum.length)]);
