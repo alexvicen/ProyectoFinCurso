@@ -14,7 +14,8 @@
         android:layout_marginTop="10dp"
         android:id="@+id/linearLayout"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp">
+        android:layout_marginRight="5dp"
+        android:background="@drawable/layaut_movimientos">
 
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -162,6 +163,16 @@
             android:layout_toEndOf="@+id/btnSimple"
             android:layout_marginLeft="5dp"
             android:typeface="serif"
+            android:background="@drawable/boton" />
+
+        <Button
+            android:layout_width="55dp"
+            android:layout_height="30dp"
+            android:text="@string/volver"
+            android:id="@+id/btnVolver"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:background="@drawable/boton" />
     </RelativeLayout>
 

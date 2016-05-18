@@ -50,7 +50,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="55dp"
         android:layout_height="30dp"
-        android:text="Cerrar"
+        android:text="@string/cerrar"
         android:id="@+id/btnCerrarSesion"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"

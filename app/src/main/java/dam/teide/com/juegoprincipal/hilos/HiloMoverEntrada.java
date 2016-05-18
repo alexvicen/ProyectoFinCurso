@@ -73,6 +73,7 @@ public class HiloMoverEntrada extends AsyncTask<Void,Void,Void>{
             activity.getBtnEspecial().setVisibility(View.VISIBLE);
             activity.getBtnEspecial().setAlpha(0.5f);
             activity.getBtnEspecial().setClickable(false);
+            activity.getBtnVolver().setVisibility(View.VISIBLE);
             activity.getTxtVida().setVisibility(View.VISIBLE);
             activity.getTxt1().setVisibility(View.VISIBLE);
             activity.getTxt2().setVisibility(View.VISIBLE);

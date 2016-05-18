@@ -33,7 +33,7 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
     private ImageView ivPer,iv1, iv2, iv3;
     private int ancho, alto, contadorEspecial=0;
     private TextView txt1, txt2,txt3,txtVida,txtNivelPersonaje,txtNivelEsqueleto1,txtNivelEsqueleto2,txtNivelEsqueleto3;
-    private Button btnJugar,btnSimple,btnEspecial;
+    private Button btnJugar,btnSimple,btnEspecial,btnVolver;
     private ProgressBar pbVida,pb1,pb2,pb3;
     private boolean encendido = true,ataque=true,ataquePer=true,ataqueEsp=true,enem1=false,enem2=false,enem3=false;
     private HiloMoverEntrada hm;
@@ -70,6 +70,7 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
         btnJugar = (Button) findViewById(R.id.btn);
         btnSimple = (Button) findViewById(R.id.btnSimple);
         btnEspecial = (Button) findViewById(R.id.btnEspecial);
+        btnVolver = (Button)findViewById(R.id.btnVolver);
         pbVida = (ProgressBar)findViewById(R.id.pbVida);
         pb1 = (ProgressBar)findViewById(R.id.pb1);
         pb2 = (ProgressBar)findViewById(R.id.pb2);
@@ -78,8 +79,10 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
         btnJugar.setOnClickListener(this);
         btnSimple.setOnClickListener(this);
         btnEspecial.setOnClickListener(this);
+        btnVolver.setOnClickListener(this);
         btnSimple.setVisibility(View.INVISIBLE);
         btnEspecial.setVisibility(View.INVISIBLE);
+        btnVolver.setVisibility(View.INVISIBLE);
         txtVida.setVisibility(View.INVISIBLE);
         txt1.setVisibility(View.INVISIBLE);
         txt2.setVisibility(View.INVISIBLE);
@@ -172,6 +175,9 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
             contadorEspecial=0;
             btnEspecial.setClickable(false);
             btnEspecial.setAlpha(0.5f);
+        }else if (v.getId()==R.id.btnVolver){
+            encendido=false;
+            ataque=false;
         }
     }
 
@@ -288,6 +294,12 @@ public class JuegoPrincipal extends AppCompatActivity implements View.OnClickLis
     }
     public void setEnem3(boolean enem3) {
         this.enem3 = enem3;
+    }
+    public Button getBtnVolver() {
+        return btnVolver;
+    }
+    public void setBtnVolver(Button btnVolver) {
+        this.btnVolver = btnVolver;
     }
 
     public void bajarVida(Esqueleto esqueleto){
