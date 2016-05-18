@@ -26,7 +26,6 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Juego Principal"
         android:id="@+id/btnJuegoPrincipal"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
@@ -34,35 +33,32 @@
         android:layout_marginRight="36dp"
         android:layout_marginEnd="36dp"
         android:typeface="serif"
-        android:background="@drawable/boton" />
+        android:background="@drawable/campamento" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Herreria"
         android:id="@+id/btnHerreria"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/boton"
+        android:background="@drawable/herreria"
         android:typeface="serif" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="55dp"
         android:layout_height="30dp"
-        android:text="@string/cerrar"
         android:id="@+id/btnCerrarSesion"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/boton" />
+        android:background="@android:drawable/ic_menu_close_clear_cancel" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Procesar"
         android:id="@+id/btnProcesar"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/boton" />
+        android:background="@drawable/procesar" />
 </RelativeLayout>

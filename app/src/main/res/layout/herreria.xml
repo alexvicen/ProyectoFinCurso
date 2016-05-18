@@ -272,9 +272,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/volver"
                 android:id="@+id/btnIndex"
-                android:background="@drawable/boton"
+                android:background="@android:drawable/ic_menu_revert"
                 android:typeface="serif"
                 android:layout_marginTop="20dp" />
         </LinearLayout>

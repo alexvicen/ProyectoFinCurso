@@ -134,46 +134,43 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Jugar"
             android:id="@+id/btn"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:typeface="serif"
-            android:background="@drawable/boton" />
+            android:background="@android:drawable/ic_media_play" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="A.Simple"
             android:id="@+id/btnSimple"
             android:layout_alignTop="@+id/btnEspecial"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginRight="5dp"
             android:typeface="serif"
-            android:background="@drawable/boton" />
+            android:background="@drawable/ataque"
+            android:layout_marginLeft="15dp" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="a.Especial"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
             android:id="@+id/btnEspecial"
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@+id/btnSimple"
             android:layout_toEndOf="@+id/btnSimple"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:typeface="serif"
-            android:background="@drawable/boton" />
+            android:background="@drawable/ataque_especial" />
 
         <Button
             android:layout_width="55dp"
             android:layout_height="30dp"
-            android:text="@string/volver"
             android:id="@+id/btnVolver"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:background="@drawable/boton" />
+            android:background="@android:drawable/ic_menu_revert" />
     </RelativeLayout>
 
 </RelativeLayout>

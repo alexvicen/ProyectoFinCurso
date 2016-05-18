@@ -44,10 +44,9 @@
         <Button
             android:layout_width="45dp"
             android:layout_height="30dp"
-            android:text="@string/salir"
             android:id="@+id/btnSalir"
             android:textSize="12dp"
-            android:background="@drawable/boton"
+            android:background="@android:drawable/ic_menu_revert"
             android:layout_marginLeft="30dp" />
 
     </LinearLayout>
