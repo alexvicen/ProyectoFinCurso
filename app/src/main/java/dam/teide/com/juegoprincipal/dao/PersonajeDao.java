@@ -77,7 +77,6 @@ public class PersonajeDao extends DBHelperMOS{
     }
     public static void actualizarExperiencia(Context context,int experiencia) throws SQLException {
         cargarDao(context);
-        experiencia = experiencia+buscarPersonaje(context).getExperiencia();
         UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
         updateBuilder.where().eq(Personaje.ID_PERSONAJE,buscarPersonaje(context).getId_personaje());
         updateBuilder.updateColumnValue(Personaje.EXPERIENCIA, experiencia);

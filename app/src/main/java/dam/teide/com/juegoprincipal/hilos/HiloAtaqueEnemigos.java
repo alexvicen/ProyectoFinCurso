@@ -84,8 +84,7 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
                     flecha1.setVisibility(View.INVISIBLE);
                     x1=flecha1.getX();
                     y1=flecha1.getY();
-                    metaX=ivPer.getX();
-                    aumX1=iv1.getX()/metaX;
+                    aumX1=(iv1.getX()-ivPer.getX())/(ivPer.getY()-iv1.getY());
                     movimiento1 = R.drawable.ataque_esqueleto;
                     iv1.setBackgroundResource(0);
                     iv1.setBackgroundResource(movimiento1);
@@ -141,8 +140,7 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
                     flecha3.setVisibility(View.INVISIBLE);
                     x3=flecha3.getX();
                     y3=flecha3.getY();
-                    metaX=ivPer.getX();
-                    aumX3=iv3.getX()/metaX;
+                    aumX3=(iv3.getX()-ivPer.getX())/(ivPer.getY()-iv3.getY());
                     movimiento3 = R.drawable.ataque_esqueleto;
                     iv3.setBackgroundResource(0);
                     iv3.setBackgroundResource(movimiento3);
@@ -161,7 +159,7 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
                 if (flecha1!=null) {
                     flecha1.setVisibility(View.VISIBLE);
                     if (flecha1.getX()>ivPer.getX()){
-                        x1-=aumX1;
+                        x1+=aumX1;
                         y1-=1;
                         flecha1.setX(x1);
                         flecha1.setY(y1);
@@ -172,7 +170,7 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
                 if (flecha2!=null) {
                     flecha2.setVisibility(View.VISIBLE);
                     if (flecha2.getX()>ivPer.getX()){
-                        x2-=aumX1;
+                        x2+=aumX1;
                         flecha2.setX(x2);
                     }else{
                         if (activity.getEsqueleto1().getVida()<=0&&activity.getEsqueleto3().getVida()<=0){
@@ -221,7 +219,7 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
                 flecha1=null;
                 flecha2=null;
                 flecha3=null;
-                if (activity.getEsqueleto1().getVida()>0&&activity.getEsqueleto2().getVida()>0&&activity.getEsqueleto3().getVida()>0) {
+                if (activity.getEsqueleto1().getVida()>0||activity.getEsqueleto2().getVida()>0||activity.getEsqueleto3().getVida()>0) {
                     activity.setAtaque(true);
                 }
                 break;

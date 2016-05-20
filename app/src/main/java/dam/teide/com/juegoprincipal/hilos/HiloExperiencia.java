@@ -3,6 +3,9 @@ package dam.teide.com.juegoprincipal.hilos;
 import android.os.AsyncTask;
 import android.view.View;
 
+import java.sql.SQLException;
+
+import dam.teide.com.juegoprincipal.dao.PersonajeDao;
 import dam.teide.com.juegoprincipal.nucleo.Experiencia;
 
 /**
@@ -17,10 +20,16 @@ public class HiloExperiencia extends AsyncTask<Void,Void,Void>{
 
     @Override
     protected Void doInBackground(Void... params) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         while (activity.isEjecutar()){
             try {
+
                 publishProgress();
-                Thread.sleep(350);
+                Thread.sleep(2);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -33,11 +42,11 @@ public class HiloExperiencia extends AsyncTask<Void,Void,Void>{
         super.onProgressUpdate(values);
         activity.setExSum(activity.getExSum()+1);
         activity.setExSumTot(activity.getExSumTot()+1);
-        if (activity.getExSum()==activity.getExTot()){
+        if (activity.getExSum()>=activity.getExTot()){
             activity.setExSum(0);
             activity.setNivel(activity.getNivel()+1);
         }
-        if (activity.getExSumTot()==activity.getExp()){
+        if (activity.getExSumTot()>=activity.getExp()){
             activity.setEjecutar(false);
         }
     }
@@ -46,5 +55,11 @@ public class HiloExperiencia extends AsyncTask<Void,Void,Void>{
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         activity.getBtnSalir().setVisibility(View.VISIBLE);
+        try {
+            PersonajeDao.actualizarNivel(activity,activity.getNivel());
+            PersonajeDao.actualizarExperiencia(activity,activity.getExSum());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

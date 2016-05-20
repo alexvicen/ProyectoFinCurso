@@ -147,7 +147,7 @@ public class Personaje {
     }
     private int Vida(int nivel, int casco){
         int resulvid;
-        resulvid = (nivel*100)+(casco*5);
+        resulvid = (nivel*70)+(casco*5);
         return resulvid;
     }
     private int Ataque(int nivel, int arco,int flecha){

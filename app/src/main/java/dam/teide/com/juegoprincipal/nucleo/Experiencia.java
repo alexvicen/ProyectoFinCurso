@@ -20,7 +20,7 @@ public class Experiencia extends AppCompatActivity implements View.OnClickListen
     private TextView txtNombre,txtExperiencia,txtNivel;
     private ProgressBar pbExperiencia;
     private Button btnSalir;
-    private int exp,exSum,exSumTot,exTot,nivel;
+    private int exp,exSum,exSumTot=0,exTot,nivel;
     private Personaje p = null;
     private boolean ejecutar = true;
     @Override
@@ -40,7 +40,6 @@ public class Experiencia extends AppCompatActivity implements View.OnClickListen
             e.printStackTrace();
         }
         exSum = p.getExperiencia();
-        exSumTot = exSum;
         setNivel(p.getNivel());
         txtNombre.setText(p.getNombre_personaje()+"");
         txtExperiencia.setText(exSum+"/"+exTot);
@@ -78,6 +77,7 @@ public class Experiencia extends AppCompatActivity implements View.OnClickListen
     public void setExSum(int exSum) {
         this.exSum = exSum;
         txtExperiencia.setText(this.exSum+"/"+exTot);
+        pbExperiencia.setProgress(exSum);
     }
     public int getExTot() {
         return exTot;

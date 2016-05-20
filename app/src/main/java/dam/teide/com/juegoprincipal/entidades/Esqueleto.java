@@ -24,7 +24,7 @@ public class Esqueleto {
     }
     private int Ataque(int nivel){
         int resulata;
-        resulata = (nivel*2);
+        resulata = (nivel*5);
         return resulata;
     }
     private int Defensa(int nivel){
@@ -34,12 +34,12 @@ public class Esqueleto {
     }
     private int Velocidad(int nivel){
         int resulvel;
-        resulvel = (nivel*2);
+        resulvel = (nivel*4);
         return resulvel;
     }
     private int Critico(int nivel){
         int resulcrit;
-        resulcrit = (nivel*2);
+        resulcrit = (nivel*3);
         return resulcrit;
     }
 
