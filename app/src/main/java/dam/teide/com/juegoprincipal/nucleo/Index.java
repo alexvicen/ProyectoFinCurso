@@ -48,7 +48,6 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
             case R.id.btnJuegoPrincipal:
                 i = new Intent(this,JuegoPrincipal.class);
                 startActivityForResult(i,0);
-                finish();
                 break;
             case R.id.btnHerreria:
                 i = new Intent(this,Herreria.class);
@@ -120,6 +119,9 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
         if (requestCode==0){
             int[]array = data.getIntArrayExtra("nivel");
             int exp = (array[0]+array[1]+array[2])*50;
+            Intent i = new Intent(this,Experiencia.class);
+            i.putExtra("exp",exp);
+            startActivity(i);
         }
     }
 }

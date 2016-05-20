@@ -231,9 +231,6 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        Toast.makeText(activity, "Sale hilo esqueleto", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(activity,Index.class);
-        activity.startActivity(i);
         Intent in = new Intent();
         int[]array={activity.getEsqueleto1().getNivel(),activity.getEsqueleto2().getNivel(),activity.getEsqueleto3().getNivel()};
         in.putExtra("nivel",array);
