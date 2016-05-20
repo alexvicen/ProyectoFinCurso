@@ -10,6 +10,7 @@ public class Personaje {
     public static final String FK_USUARIO="fk_usuario";
     public static final String NOMBRE_PERSONAJE = "nombre_personaje";
     public static final String NIVEL = "nivel";
+    public static final String EXPERIENCIA = "experiencia";
     public static final String NIVEL_CASCO = "nivCasco";
     public static final String NIVEL_ARCO = "nivArco";
     public static final String NIVEL_ESCUDO = "nivEscudo";
@@ -41,6 +42,8 @@ public class Personaje {
     private String nombre_personaje;
     @DatabaseField(columnName = NIVEL)
     private int nivel;
+    @DatabaseField(columnName = EXPERIENCIA)
+    private int experiencia;
     @DatabaseField(columnName = NIVEL_CASCO)
     private int nivCasco;
     @DatabaseField(columnName = NIVEL_ARCO)
@@ -90,11 +93,12 @@ public class Personaje {
 
     }
 
-    public Personaje(int fk_usuario,String nombre_personaje,int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha,
+    public Personaje(int fk_usuario,String nombre_personaje,int nivel,int experiencia,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha,
                      int pepita,int hierro,int gema_bruto,int roca,int tronco,int lingote_oro, int lingote_hierro, int gema, int piedra, int tabla_madera) {
         this.fk_usuario=fk_usuario;
         this.nombre_personaje=nombre_personaje;
         this.nivel = nivel;
+        this.experiencia=experiencia;
         this.nivCasco = nivCasco;
         this.nivArco = nivArco;
         this.nivEscudo = nivEscudo;
@@ -120,6 +124,7 @@ public class Personaje {
     }
     public Personaje(int nivel){
         this.nivel = nivel;
+        this.experiencia=0;
         int nivCasco=0;
         this.nivCasco = nivCasco;
         int nivArco=0;
@@ -329,5 +334,11 @@ public class Personaje {
     }
     public void setFk_usuario(int fk_usuario) {
         this.fk_usuario = fk_usuario;
+    }
+    public int getExperiencia() {
+        return experiencia;
+    }
+    public void setExperiencia(int experiencia) {
+        this.experiencia = experiencia;
     }
 }

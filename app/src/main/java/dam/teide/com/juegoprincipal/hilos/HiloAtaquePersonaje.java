@@ -35,17 +35,18 @@ public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
 
     @Override
     protected Void doInBackground(Void... params) {
-        try {
-            if (activity.isAtaqueEsp()) {
-                publishProgress(3);
-            }else{
-                publishProgress(0);
+        if (activity.isEncendido()) {
+            try {
+                if (activity.isAtaqueEsp()) {
+                    publishProgress(3);
+                } else {
+                    publishProgress(0);
+                }
+                Thread.sleep(900);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-            Thread.sleep(900);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        if (activity.isAtaqueEsp()) {
+            if (activity.isAtaqueEsp()) {
                 try {
                     publishProgress(4);
                     Thread.sleep(50);
@@ -57,18 +58,19 @@ public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-        }
-        if (!activity.isAtaqueEsp()) {
-            while (activity.isAtaquePer()) {
-                try {
-                    publishProgress(1);
-                    Thread.sleep(7);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
-            publishProgress(2);
-            activity.setAtaquePer(true);
+            if (!activity.isAtaqueEsp()) {
+                while (activity.isAtaquePer()) {
+                    try {
+                        publishProgress(1);
+                        Thread.sleep(7);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                publishProgress(2);
+                activity.setAtaquePer(true);
+            }
         }
         return null;
     }
@@ -139,11 +141,8 @@ public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
                 y1=y;
                 y3=y;
 
-                metaX1=iv1.getX();
-                aumX1=metaX1/ivPer.getX();
-
-                metaX3=iv3.getX();
-                aumX3=metaX3/ivPer.getX();
+                aumX1=(iv1.getX()-ivPer.getX())/(iv1.getY()-ivPer.getY());
+                aumX3=(iv3.getX()-ivPer.getX())/(ivPer.getY()-iv3.getY());
                 movimientoPer = R.drawable.ataque_chico;
                 ivPer.setBackgroundResource(0);
                 ivPer.setBackgroundResource(movimientoPer);
@@ -155,8 +154,8 @@ public class HiloAtaquePersonaje extends AsyncTask<Void,Integer,Void>{
                 if (activity.getEsqueleto1().getVida()>0){
                     if (flechaPer1.getX()<iv1.getX()){
                         flechaPer1.setVisibility(View.VISIBLE);
-                        x1=(aumX1+x1);
-                        y1=(1+y1);
+                        x1+=aumX1;
+                        y1+=1;
                         flechaPer1.setX(x1);
                         flechaPer1.setY(y1);
                     }else{

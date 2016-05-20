@@ -113,19 +113,20 @@ public class Login extends AppCompatActivity implements View.OnClickListener,Tex
     public void errorDatos(){
         Toast.makeText(this,"Login fallidos",Toast.LENGTH_SHORT).show();
     }
+
     public void recogerJsonPersonaje(String Json) throws JSONException, SQLException {
         JSONObject jsonObject = new JSONObject(Json);
         JSONArray jsonArray = jsonObject.getJSONArray("0");
         int fk_usuario = jsonArray.getJSONObject(0).getInt("fk_usuario");
         String nombre = jsonArray.getJSONObject(0).getString("nombre_personaje");
         int nivel = jsonArray.getJSONObject(0).getInt("nivel");
+        int experiencia = jsonArray.getJSONObject(0).getInt("experiencia");
         int nivel_casco = jsonArray.getJSONObject(0).getInt("nivCasco");
         int nivel_arco = jsonArray.getJSONObject(0).getInt("nivArco");
         int nivel_escudo = jsonArray.getJSONObject(0).getInt("nivEscudo");
         int nivel_guantes = jsonArray.getJSONObject(0).getInt("nivGuantes");
         int nivel_botas = jsonArray.getJSONObject(0).getInt("nivBotas");
         int nivel_flecha = jsonArray.getJSONObject(0).getInt("nivFlecha");
-
         int pepita = jsonArray.getJSONObject(0).getInt("pepita");
         int hierro = jsonArray.getJSONObject(0).getInt("hierro");
         int gema_bruto = jsonArray.getJSONObject(0).getInt("gema_bruto");
@@ -137,7 +138,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener,Tex
         int piedra = jsonArray.getJSONObject(0).getInt("piedra");
         int tabla_madera = jsonArray.getJSONObject(0).getInt("tabla_madera");
 
-        if(PersonajeDao.newPersonaje(this,fk_usuario,nombre, nivel, nivel_casco,  nivel_arco, nivel_escudo, nivel_guantes, nivel_botas, nivel_flecha,
+        if(PersonajeDao.newPersonaje(this,fk_usuario,nombre, nivel,experiencia, nivel_casco,  nivel_arco, nivel_escudo, nivel_guantes, nivel_botas, nivel_flecha,
                 pepita,hierro,gema_bruto,roca,tronco,lingote_oro,lingote_hierro,gema,piedra,tabla_madera)){
             Intent i = new Intent(this,Index.class);
             startActivity(i);

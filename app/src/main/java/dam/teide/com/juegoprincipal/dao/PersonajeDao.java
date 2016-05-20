@@ -19,8 +19,8 @@ public class PersonajeDao extends DBHelperMOS{
         dao = getHelper(context).getPersonajeDao();
     }
     //FUNCIONES DE CREACION
-    public static boolean newPersonaje(Context context,int fk_usuario,String nombre_personaje,int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha,int pepita,int hierro,int gema_bruto,int roca,int tronco,int lingote_oro, int lingote_hierro, int gema, int piedra, int tabla_madera){
-        Personaje p = montarPersonaje(fk_usuario,nombre_personaje,nivel,nivCasco, nivArco, nivEscudo, nivGuantes, nivBotas, nivFlecha,pepita,hierro,gema_bruto,roca,tronco,lingote_oro,lingote_hierro,gema, piedra, tabla_madera);
+    public static boolean newPersonaje(Context context,int fk_usuario,String nombre_personaje,int nivel,int experiencia,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha,int pepita,int hierro,int gema_bruto,int roca,int tronco,int lingote_oro, int lingote_hierro, int gema, int piedra, int tabla_madera){
+        Personaje p = montarPersonaje(fk_usuario,nombre_personaje,nivel,experiencia,nivCasco, nivArco, nivEscudo, nivGuantes, nivBotas, nivFlecha,pepita,hierro,gema_bruto,roca,tronco,lingote_oro,lingote_hierro,gema, piedra, tabla_madera);
         return crearPersonaje(p,context);
     }
     public static boolean crearPersonaje(Personaje p,Context context){
@@ -33,8 +33,8 @@ public class PersonajeDao extends DBHelperMOS{
             return false;
         }
     }
-    public static Personaje montarPersonaje(int fk_usuario,String nombre_personaje,int nivel,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha,int pepita,int hierro,int gema_bruto,int roca,int tronco,int lingote_oro, int lingote_hierro, int gema, int piedra, int tabla_madera){
-        Personaje p = new Personaje(fk_usuario,nombre_personaje,nivel, nivCasco, nivArco, nivEscudo, nivGuantes, nivBotas, nivFlecha,pepita,hierro,gema_bruto,roca,tronco,lingote_oro,lingote_hierro,gema,piedra,tabla_madera);
+    public static Personaje montarPersonaje(int fk_usuario,String nombre_personaje,int nivel,int experiencia,int nivCasco, int nivArco, int nivEscudo, int nivGuantes, int nivBotas, int nivFlecha,int pepita,int hierro,int gema_bruto,int roca,int tronco,int lingote_oro, int lingote_hierro, int gema, int piedra, int tabla_madera){
+        Personaje p = new Personaje(fk_usuario,nombre_personaje,nivel,experiencia, nivCasco, nivArco, nivEscudo, nivGuantes, nivBotas, nivFlecha,pepita,hierro,gema_bruto,roca,tronco,lingote_oro,lingote_hierro,gema,piedra,tabla_madera);
         return p;
     }
     //FUNCIONES DE BORRADO
@@ -74,6 +74,14 @@ public class PersonajeDao extends DBHelperMOS{
         actualizarDefensa(context);
         actualizarVelocidad(context);
         actualizarCritico(context);
+    }
+    public static void actualizarExperiencia(Context context,int experiencia) throws SQLException {
+        cargarDao(context);
+        experiencia = experiencia+buscarPersonaje(context).getExperiencia();
+        UpdateBuilder<Personaje, Integer> updateBuilder = dao.updateBuilder();
+        updateBuilder.where().eq(Personaje.ID_PERSONAJE,buscarPersonaje(context).getId_personaje());
+        updateBuilder.updateColumnValue(Personaje.EXPERIENCIA, experiencia);
+        updateBuilder.update();
     }
     public static void actualizarNivelCasco( Context context, int nivelCasco) throws SQLException {
         cargarDao(context);

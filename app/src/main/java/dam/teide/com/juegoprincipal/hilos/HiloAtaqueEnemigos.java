@@ -1,5 +1,6 @@
 package dam.teide.com.juegoprincipal.hilos;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
@@ -52,7 +53,7 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
                 }
             }
             publishProgress(2);
-            activity.setAtaque(true);
+
         }
         return null;
     }
@@ -68,7 +69,7 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
 
         switch (values[0]){
             case 0:
-                if (activity.getEsqueleto1().getVida()>1) {
+                if (activity.getEsqueleto1().getVida()>0) {
                     flecha1 = new ImageView(activity);
                     flecha1.setX(iv1.getX());
                     flecha1.setY(iv1.getY());
@@ -98,7 +99,7 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
                     animacion1.start();
                     activity.setEnem1(false);
                 }
-                if (activity.getEsqueleto2().getVida()>=1) {
+                if (activity.getEsqueleto2().getVida()>0) {
                     flecha2 = new ImageView(activity);
                     flecha2.setX(iv2.getX());
                     flecha2.setY(iv2.getY());
@@ -125,7 +126,7 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
                     animacion2.start();
                     activity.setEnem2(false);
                 }
-                if (activity.getEsqueleto3().getVida()>=1) {
+                if (activity.getEsqueleto3().getVida()>0) {
                     flecha3 = new ImageView(activity);
                     flecha3.setX(iv3.getX());
                     flecha3.setY(iv3.getY());
@@ -150,7 +151,7 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
                 }else if (activity.isEnem3()){
                     movimiento3 = R.drawable.golpe_esqueleto;
                     iv3.setBackgroundResource(0);
-                    iv3.setBackgroundResource(movimiento1);
+                    iv3.setBackgroundResource(movimiento3);
                     animacion3 = (AnimationDrawable) iv3.getBackground();
                     animacion3.start();
                     activity.setEnem3(false);
@@ -161,7 +162,7 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
                     flecha1.setVisibility(View.VISIBLE);
                     if (flecha1.getX()>ivPer.getX()){
                         x1-=aumX1;
-                        y1-=2;
+                        y1-=1;
                         flecha1.setX(x1);
                         flecha1.setY(y1);
                     }else{
@@ -183,7 +184,7 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
                     flecha3.setVisibility(View.VISIBLE);
                     if (flecha3.getX()>ivPer.getX()){
                         x3-=aumX3;
-                        y3+=2;
+                        y3+=1;
                         flecha3.setX(x3);
                         flecha3.setY(y3);
                     }else{
@@ -220,6 +221,9 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
                 flecha1=null;
                 flecha2=null;
                 flecha3=null;
+                if (activity.getEsqueleto1().getVida()>0&&activity.getEsqueleto2().getVida()>0&&activity.getEsqueleto3().getVida()>0) {
+                    activity.setAtaque(true);
+                }
                 break;
         }
     }
@@ -227,8 +231,13 @@ public class HiloAtaqueEnemigos extends AsyncTask<Void,Integer,Void>{
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
+        Toast.makeText(activity, "Sale hilo esqueleto", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(activity,Index.class);
         activity.startActivity(i);
+        Intent in = new Intent();
+        int[]array={activity.getEsqueleto1().getNivel(),activity.getEsqueleto2().getNivel(),activity.getEsqueleto3().getNivel()};
+        in.putExtra("nivel",array);
+        activity.setResult(Activity.RESULT_OK,in);
         activity.finish();
     }
 }

@@ -41,10 +41,11 @@
             android:name=".nucleo.ProcesarMateriales"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.FullScreen" />
-        <activity android:name=".nucleo.MejorarArmas"
+        <activity
+            android:name=".nucleo.MejorarArmas"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Dialog">
-        </activity>
+            android:theme="@style/Theme.AppCompat.Dialog"></activity>
+        <activity android:name=".nucleo.Experiencia"></activity>
     </application>
 
 </manifest>

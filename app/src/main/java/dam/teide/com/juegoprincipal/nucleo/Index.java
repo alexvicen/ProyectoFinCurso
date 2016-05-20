@@ -47,7 +47,7 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
                 break;
             case R.id.btnJuegoPrincipal:
                 i = new Intent(this,JuegoPrincipal.class);
-                startActivity(i);
+                startActivityForResult(i,0);
                 finish();
                 break;
             case R.id.btnHerreria:
@@ -112,5 +112,14 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
 
     public void errorDatos() {
         Toast.makeText(Index.this, "Error al cerrar sesion", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==0){
+            int[]array = data.getIntArrayExtra("nivel");
+            int exp = (array[0]+array[1]+array[2])*50;
+        }
     }
 }
