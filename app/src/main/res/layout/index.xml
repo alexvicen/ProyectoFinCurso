@@ -11,9 +11,8 @@
     android:background="@drawable/fondo1">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Candy"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/btnCandy"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
@@ -21,11 +20,11 @@
         android:layout_marginLeft="26dp"
         android:layout_marginStart="26dp"
         android:typeface="serif"
-        android:background="@drawable/boton" />
+        android:background="@drawable/candy" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/btnJuegoPrincipal"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
@@ -36,8 +35,8 @@
         android:background="@drawable/campamento" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/btnHerreria"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -55,8 +54,8 @@
         android:background="@android:drawable/ic_menu_close_clear_cancel" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/btnProcesar"
         android:background="@drawable/procesar"
         android:layout_above="@+id/btnCandy"

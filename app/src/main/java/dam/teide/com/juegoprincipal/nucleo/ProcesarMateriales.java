@@ -74,6 +74,10 @@ public class ProcesarMateriales extends AppCompatActivity implements View.OnClic
         ivFuego.setBackgroundResource(movimiento2);
         animacion2 = (AnimationDrawable) ivFuego.getBackground();
         animacion2.start();
+        movimiento3 = R.drawable.fondo_cinta;
+        ivCintaTransportadora.setBackgroundResource(movimiento3);
+        animacion3 = (AnimationDrawable) ivCintaTransportadora.getBackground();
+        animacion3.start();
         try {
             personaje = PersonajeDao.buscarPersonaje(this);
             roca=personaje.getRoca();
